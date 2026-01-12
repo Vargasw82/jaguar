@@ -264,45 +264,203 @@
 
     /* Context Section */
     #contexto {
-      background: linear-gradient(180deg, #0a0f0a 0%, #0d1a0d 100%);
+      min-height: 100vh;
+      background: url('JaguarGoldLight.png') left center/cover no-repeat;
+      position: relative;
       display: flex;
       align-items: center;
+      padding: 60px 80px;
     }
 
-    .context-grid {
+    #contexto::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(0,10,5,0.3) 0%, rgba(0,10,5,0.7) 40%, rgba(0,10,5,0.95) 60%);
+    }
+
+    .context-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      gap: 40px;
     }
 
-    .context-image {
-      width: 100%;
-      height: 500px;
-      background: url('https://images.unsplash.com/photo-1456926631375-92c8ce872def?q=80&w=2670') center/cover no-repeat;
+    .context-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 40px;
+    }
+
+    .context-cards {
+      display: flex;
+      gap: 16px;
+    }
+
+    .context-card {
+      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(222,176,70,0.3);
       border-radius: 8px;
+      padding: 20px 16px;
+      width: 180px;
+      text-align: center;
+    }
+
+    .context-card-icon {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .context-card-icon img {
+      height: 60px;
+      width: auto;
+    }
+
+    .context-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #DEB046;
+      margin-bottom: 8px;
+    }
+
+    .context-card p {
+      font-size: 11px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .context-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .context-right .section-label {
+      font-size: 11px;
+      color: #DEB046;
+    }
+
+    .context-right .section-title {
+      font-size: 42px;
+      color: #DEB046;
+      margin-bottom: 24px;
+    }
+
+    .context-right .section-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      max-width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .context-quote {
+      border-left: 3px solid #DEB046;
+      padding-left: 20px;
+      margin-top: 24px;
+    }
+
+    .context-quote p {
+      font-size: 16px;
+      font-style: italic;
+      color: #DEB046;
+      line-height: 1.6;
+    }
+
+    .context-logo {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      z-index: 2;
+    }
+
+    .context-logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    /* Umbrella Chart */
+    .umbrella-chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .umbrella-circle {
+      width: 90px;
+      height: 90px;
       position: relative;
     }
 
-    .context-image::after {
-      content: '';
+    .umbrella-segment {
       position: absolute;
-      inset: 0;
-      border: 1px solid rgba(212,160,58,0.3);
-      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .umbrella-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background: #DEB046;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .umbrella-labels {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .umbrella-label {
+      font-size: 8px;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .umbrella-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
     }
 
     .highlight-box {
-      background: rgba(212,160,58,0.1);
-      border-left: 4px solid #D4A03A;
+      background: rgba(222,176,70,0.1);
+      border-left: 4px solid #DEB046;
       padding: 24px;
       margin-top: 32px;
     }
 
     .highlight-box p {
-      font-size: 18px;
+      font-size: 16px;
       font-style: italic;
-      color: #D4A03A;
+      color: #DEB046;
     }
 
     /* Alliance Section */
@@ -651,21 +809,72 @@
 
   <!-- Context Section -->
   <section id="contexto">
-    <div class="context-grid">
-      <div>
+    <div class="context-wrapper">
+      <!-- Left: Cards -->
+      <div class="context-left">
+        <div class="context-cards">
+          <!-- Card 1: Pérdida de hábitat -->
+          <div class="context-card">
+            <div class="context-card-icon">
+              <img src="PerdidaH.png" alt="Pérdida de hábitat">
+            </div>
+            <h4>Pérdida de hábitat</h4>
+            <p>La deforestación y expansión agrícola fragmentan los corredores biológicos que el jaguar necesita para sobrevivir.</p>
+          </div>
+
+          <!-- Card 2: Conflicto humano-fauna -->
+          <div class="context-card">
+            <div class="context-card-icon">
+              <img src="ConflictoH.png" alt="Conflicto humano-fauna">
+            </div>
+            <h4>Conflicto humano-fauna</h4>
+            <p>Las comunidades rurales y el jaguar compiten por territorio, generando conflictos que amenazan a ambas partes.</p>
+          </div>
+
+          <!-- Card 3: Especie sombrilla -->
+          <div class="context-card">
+            <div class="context-card-icon">
+              <img src="Sombrilla.png" alt="Especie sombrilla">
+            </div>
+            <h4>Especie sombrilla</h4>
+            <div class="umbrella-chart">
+              <div class="umbrella-circle">
+                <svg viewBox="0 0 100 100" class="umbrella-segment">
+                  <path d="M50 50 L50 5 A45 45 0 0 1 89 72 Z" fill="#4a7c59"/>
+                  <path d="M50 50 L89 72 A45 45 0 0 1 11 72 Z" fill="#3d6b8c"/>
+                  <path d="M50 50 L11 72 A45 45 0 0 1 50 5 Z" fill="#8b6914"/>
+                </svg>
+                <div class="umbrella-center">Jaguar</div>
+              </div>
+              <div class="umbrella-labels">
+                <span class="umbrella-label"><span class="umbrella-dot" style="background:#4a7c59"></span>Flora</span>
+                <span class="umbrella-label"><span class="umbrella-dot" style="background:#3d6b8c"></span>Agua</span>
+                <span class="umbrella-label"><span class="umbrella-dot" style="background:#8b6914"></span>Biodiversidad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="context-right">
         <span class="section-label">Contexto</span>
         <h2 class="section-title">El Jaguar: Símbolo de México en Peligro</h2>
         <p class="section-text">
           El jaguar (Panthera onca) es el felino más grande de América y un símbolo cultural profundamente arraigado en la identidad mexicana. Desde las civilizaciones prehispánicas hasta nuestros días, el jaguar ha representado poder, fuerza y conexión con la naturaleza.
         </p>
-        <p class="section-text" style="margin-top: 20px;">
+        <p class="section-text">
           Sin embargo, la pérdida de hábitat, la caza furtiva y los conflictos con comunidades humanas han puesto a esta especie en riesgo. México alberga la segunda población más grande de jaguares en América, lo que nos da una responsabilidad única en su conservación.
         </p>
-        <div class="highlight-box">
+        <div class="context-quote">
           <p>"Proteger al jaguar es proteger los ecosistemas enteros que sostienen la vida en México."</p>
         </div>
       </div>
-      <div class="context-image"></div>
+    </div>
+
+    <!-- Logo -->
+    <div class="context-logo">
+      <img src="LogoAlianza.png" alt="Logo Alianza">
     </div>
   </section>
 
