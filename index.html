@@ -286,61 +286,68 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .context-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 40px;
     }
 
     .context-left {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 40px;
+      flex-shrink: 0;
     }
 
     .context-cards {
       display: flex;
-      gap: 24px;
+      gap: 20px;
+      position: relative;
     }
 
     .context-card {
       background: url('tarjeta.svg') center/100% 100% no-repeat;
       border: none;
       border-radius: 12px;
-      padding: 28px 20px;
-      width: 260px;
+      padding: 24px 18px;
+      width: 220px;
       text-align: center;
-      min-height: 300px;
+      min-height: 280px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .context-card-icon {
-      height: 80px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .context-card-icon img {
-      height: 70px;
+      height: 60px;
       width: auto;
     }
 
     .context-card h4 {
       font-family: 'Poppins', sans-serif;
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 600;
       color: #DEB046;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       white-space: nowrap;
     }
 
     .context-card p {
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.5;
       color: rgba(255,255,255,0.8);
     }
 
@@ -350,7 +357,8 @@
       flex-direction: column;
       text-align: center;
       align-items: center;
-      width: 260px;
+      width: 220px;
+      margin-right: 120px;
     }
 
     .context-card.with-seal .card-content {
@@ -362,10 +370,10 @@
 
     .context-card.with-seal .card-seal {
       position: absolute;
-      bottom: -80px;
-      right: -100px;
-      width: 220px;
-      height: 220px;
+      bottom: -60px;
+      right: -140px;
+      width: 200px;
+      height: 200px;
       z-index: 10;
     }
 
@@ -846,55 +854,57 @@
   <!-- Context Section -->
   <section id="contexto">
     <div class="context-wrapper">
-      <!-- Left: Cards -->
-      <div class="context-left">
-        <div class="context-cards">
-          <!-- Card 1: Pérdida de hábitat -->
-          <div class="context-card">
-            <div class="context-card-icon">
-              <img src="PerdidaH.png" alt="Pérdida de hábitat">
-            </div>
-            <h4>Pérdida de hábitat</h4>
-            <p>La deforestación y expansión agrícola fragmentan los corredores biológicos que el jaguar necesita para sobrevivir.</p>
-          </div>
-
-          <!-- Card 2: Conflicto humano-fauna -->
-          <div class="context-card">
-            <div class="context-card-icon">
-              <img src="ConflictoH.png" alt="Conflicto humano-fauna">
-            </div>
-            <h4>Conflicto humano-fauna</h4>
-            <p>Las comunidades rurales y el jaguar compiten por territorio, generando conflictos que amenazan a ambas partes.</p>
-          </div>
-
-          <!-- Card 3: Especie sombrilla -->
-          <div class="context-card with-seal">
-            <div class="card-content">
+      <div class="context-top">
+        <!-- Left: Cards -->
+        <div class="context-left">
+          <div class="context-cards">
+            <!-- Card 1: Pérdida de hábitat -->
+            <div class="context-card">
               <div class="context-card-icon">
-                <img src="Sombrilla.png" alt="Especie sombrilla">
+                <img src="PerdidaH.png" alt="Pérdida de hábitat">
               </div>
-              <h4>Especie sombrilla</h4>
-              <p>Proteger al jaguar significa proteger miles de especies que comparten su ecosistema.</p>
+              <h4>Pérdida de hábitat</h4>
+              <p>La deforestación y expansión agrícola fragmentan los corredores biológicos que el jaguar necesita para sobrevivir.</p>
             </div>
-            <div class="card-seal">
-              <img src="Sello_Impacto.png" alt="Impacto ecológico">
+
+            <!-- Card 2: Conflicto humano-fauna -->
+            <div class="context-card">
+              <div class="context-card-icon">
+                <img src="ConflictoH.png" alt="Conflicto humano-fauna">
+              </div>
+              <h4>Conflicto humano-fauna</h4>
+              <p>Las comunidades rurales y el jaguar compiten por territorio, generando conflictos que amenazan a ambas partes.</p>
+            </div>
+
+            <!-- Card 3: Especie sombrilla -->
+            <div class="context-card with-seal">
+              <div class="card-content">
+                <div class="context-card-icon">
+                  <img src="Sombrilla.png" alt="Especie sombrilla">
+                </div>
+                <h4>Especie sombrilla</h4>
+                <p>Proteger al jaguar significa proteger miles de especies que comparten su ecosistema.</p>
+              </div>
+              <div class="card-seal">
+                <img src="Sello_Impacto.png" alt="Impacto ecológico">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: Content -->
-      <div class="context-right">
-        <span class="section-label">Contexto</span>
-        <h2 class="section-title">El Jaguar: Símbolo de México en Peligro</h2>
-        <p class="section-text">
-          El jaguar (Panthera onca) es el felino más grande de América y un símbolo cultural profundamente arraigado en la identidad mexicana. Desde las civilizaciones prehispánicas hasta nuestros días, el jaguar ha representado poder, fuerza y conexión con la naturaleza.
-        </p>
-        <p class="section-text">
-          Sin embargo, la pérdida de hábitat, la caza furtiva y los conflictos con comunidades humanas han puesto a esta especie en riesgo. México alberga la segunda población más grande de jaguares en América, lo que nos da una responsabilidad única en su conservación.
-        </p>
-        <div class="context-quote">
-          <p>"Proteger al jaguar es proteger los ecosistemas enteros que sostienen la vida en México."</p>
+        <!-- Right: Content -->
+        <div class="context-right">
+          <span class="section-label">Contexto</span>
+          <h2 class="section-title">El Jaguar: Símbolo de México en Peligro</h2>
+          <p class="section-text">
+            El jaguar (Panthera onca) es el felino más grande de América y un símbolo cultural profundamente arraigado en la identidad mexicana. Desde las civilizaciones prehispánicas hasta nuestros días, el jaguar ha representado poder, fuerza y conexión con la naturaleza.
+          </p>
+          <p class="section-text">
+            Sin embargo, la pérdida de hábitat, la caza furtiva y los conflictos con comunidades humanas han puesto a esta especie en riesgo. México alberga la segunda población más grande de jaguares en América, lo que nos da una responsabilidad única en su conservación.
+          </p>
+          <div class="context-quote">
+            <p>"Proteger al jaguar es proteger los ecosistemas enteros que sostienen la vida en México."</p>
+          </div>
         </div>
       </div>
     </div>
