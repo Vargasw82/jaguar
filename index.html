@@ -346,11 +346,11 @@
 
     /* Tarjeta Especie Sombrilla con sello */
     .context-card.with-seal {
-      flex-direction: row;
-      text-align: left;
-      align-items: flex-start;
-      width: 280px;
-      gap: 12px;
+      position: relative;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      width: 210px;
     }
 
     .context-card.with-seal .card-content {
@@ -358,21 +358,21 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      flex: 1;
     }
 
     .context-card.with-seal .card-seal {
-      width: 90px;
-      height: 90px;
-      flex-shrink: 0;
-      align-self: center;
+      position: absolute;
+      bottom: -40px;
+      right: -50px;
+      width: 110px;
+      height: 110px;
+      z-index: 10;
     }
 
     .context-card.with-seal .card-seal img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 50%;
     }
 
     .context-right {
