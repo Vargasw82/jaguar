@@ -300,47 +300,79 @@
 
     .context-cards {
       display: flex;
-      gap: 16px;
+      gap: 24px;
     }
 
     .context-card {
       background: url('tarjeta.svg') center/100% 100% no-repeat;
       border: none;
       border-radius: 12px;
-      padding: 24px 18px;
-      width: 190px;
+      padding: 20px 16px;
+      width: 210px;
       text-align: center;
-      min-height: 280px;
+      min-height: 240px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .context-card-icon {
-      height: 70px;
+      height: 65px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .context-card-icon img {
-      height: 60px;
+      height: 55px;
       width: auto;
     }
 
     .context-card h4 {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #DEB046;
       margin-bottom: 8px;
+      white-space: nowrap;
     }
 
     .context-card p {
       font-size: 11px;
       line-height: 1.5;
       color: rgba(255,255,255,0.7);
+    }
+
+    /* Tarjeta Especie Sombrilla con sello */
+    .context-card.with-seal {
+      flex-direction: row;
+      text-align: left;
+      align-items: flex-start;
+      width: 280px;
+      gap: 12px;
+    }
+
+    .context-card.with-seal .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .context-card.with-seal .card-seal {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .context-card.with-seal .card-seal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
     }
 
     .context-right {
@@ -836,25 +868,16 @@
           </div>
 
           <!-- Card 3: Especie sombrilla -->
-          <div class="context-card">
-            <div class="context-card-icon">
-              <img src="Sombrilla.png" alt="Especie sombrilla">
+          <div class="context-card with-seal">
+            <div class="card-content">
+              <div class="context-card-icon">
+                <img src="Sombrilla.png" alt="Especie sombrilla">
+              </div>
+              <h4>Especie sombrilla</h4>
+              <p>Proteger al jaguar significa proteger miles de especies que comparten su ecosistema.</p>
             </div>
-            <h4>Especie sombrilla</h4>
-            <div class="umbrella-chart">
-              <div class="umbrella-circle">
-                <svg viewBox="0 0 100 100" class="umbrella-segment">
-                  <path d="M50 50 L50 5 A45 45 0 0 1 89 72 Z" fill="#4a7c59"/>
-                  <path d="M50 50 L89 72 A45 45 0 0 1 11 72 Z" fill="#3d6b8c"/>
-                  <path d="M50 50 L11 72 A45 45 0 0 1 50 5 Z" fill="#8b6914"/>
-                </svg>
-                <div class="umbrella-center">Jaguar</div>
-              </div>
-              <div class="umbrella-labels">
-                <span class="umbrella-label"><span class="umbrella-dot" style="background:#4a7c59"></span>Flora</span>
-                <span class="umbrella-label"><span class="umbrella-dot" style="background:#3d6b8c"></span>Agua</span>
-                <span class="umbrella-label"><span class="umbrella-dot" style="background:#8b6914"></span>Biodiversidad</span>
-              </div>
+            <div class="card-seal">
+              <img src="Sello_Impacto.png" alt="Impacto ecológico">
             </div>
           </div>
         </div>
