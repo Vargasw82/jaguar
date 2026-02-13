@@ -598,6 +598,14 @@
   }
 
   /* ===================== LA PARADOJA ===================== */
+  #paradoja {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.85) 100%),
+      url('JaguarEstadio.png');
+    background-size: cover, cover;
+    background-position: center, center;
+  }
   .paradoja-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -606,11 +614,7 @@
   }
   .paradoja-visual {
     position: relative;
-    background:
-      linear-gradient(135deg, rgba(75,80,32,0.85), rgba(0,0,0,0.8)),
-      url('JaguarCloseUP.png');
-    background-size: cover, cover;
-    background-position: center, center;
+    background: linear-gradient(135deg, rgba(75,80,32,0.15), rgba(0,0,0,0.6));
     border: 1px solid rgba(130,139,55,0.2);
     padding: 48px;
     text-align: center;
@@ -913,13 +917,6 @@
     position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
     z-index: 1;
-  }
-  .ugc-card.featured-ugc .ugc-bg {
-    background:
-      linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.85) 100%),
-      url('JaguarEstadio.png');
-    background-size: cover, cover;
-    background-position: center, center;
   }
   .ugc-card-content {
     position: relative;
