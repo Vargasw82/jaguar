@@ -606,7 +606,11 @@
   }
   .paradoja-visual {
     position: relative;
-    background: linear-gradient(135deg, rgba(75,80,32,0.15), rgba(0,0,0,0.6));
+    background:
+      linear-gradient(135deg, rgba(75,80,32,0.85), rgba(0,0,0,0.8)),
+      url('JaguarCloseUP.png');
+    background-size: cover, cover;
+    background-position: center, center;
     border: 1px solid rgba(130,139,55,0.2);
     padding: 48px;
     text-align: center;
@@ -910,6 +914,13 @@
     background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
     z-index: 1;
   }
+  .ugc-card.featured-ugc .ugc-bg {
+    background:
+      linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.85) 100%),
+      url('JaguarEstadio.png');
+    background-size: cover, cover;
+    background-position: center, center;
+  }
   .ugc-card-content {
     position: relative;
     z-index: 2;
@@ -987,7 +998,7 @@
     border: 1px solid rgba(130,139,55,0.2);
     padding: 48px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 280px 1fr;
     gap: 40px;
     align-items: center;
   }
@@ -995,7 +1006,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+  }
+  .ciencia-photo {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(130,139,55,0.4);
+    filter: grayscale(15%);
   }
   .ancj-logo-img {
     width: 100px;
@@ -1026,7 +1045,11 @@
 
   /* ===================== CTA FINAL ===================== */
   .cta-section {
-    background: var(--dark-olive);
+    background:
+      linear-gradient(180deg, rgba(75,80,32,0.92) 0%, rgba(0,0,0,0.85) 100%),
+      url('JaguarGoldLight.png');
+    background-size: cover, cover;
+    background-position: center, center;
     padding: 80px 48px;
     text-align: center;
     position: relative;
@@ -1035,7 +1058,7 @@
   .cta-section::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(130,139,55,0.2), transparent 70%);
+    background: radial-gradient(circle at center, rgba(200,168,78,0.15), transparent 70%);
   }
   .cta-content { position: relative; z-index: 2; }
   .cta-hashtag {
@@ -1119,7 +1142,8 @@
     .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
     nav { padding: 14px 24px; }
     .nav-links { display: none; }
-    .ciencia-card { grid-template-columns: 1fr; }
+    .ciencia-card { grid-template-columns: 1fr; text-align: center; }
+    .ciencia-photo { width: 180px; height: 180px; }
   }
 </style>
 </head>
@@ -1381,7 +1405,8 @@
 <section class="ciencia-section">
   <div class="ciencia-card">
     <div class="ciencia-badge-area">
-      <img src="ancj.svg" alt="ANCJ" class="ancj-logo-img">
+      <img src="GerardoJaguar.png" alt="Dr. Gerardo Ceballos con jaguar" class="ciencia-photo">
+      <img src="logoANCJ.png" alt="ANCJ" class="ancj-logo-img">
     </div>
     <div class="ciencia-text">
       <div class="dr-name">Dr. Gerardo J. Ceballos González</div>
