@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#MiSelecciónEsElJaguar · México Salvando al Jaguar 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-olive: #4b5020;
+    --olive: #828b37;
+    --black: #000000;
+    --white: #fefefe;
+    --gold: #c8a84e;
+    --accent-green: #a4b044;
+    --orange: #d4842a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===================== TICKER TOP ===================== */
+  .ticker-bar {
+    background: var(--dark-olive);
+    padding: 8px 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--olive);
+  }
+  .ticker-track {
+    display: flex;
+    animation: tickerScroll 35s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 40px;
+    color: var(--white);
+    opacity: 0.9;
+  }
+  .ticker-item .donor-name { color: var(--accent-green); font-weight: 600; }
+  .ticker-item .amount { color: var(--gold); font-weight: 700; }
+  @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ===================== NAV ===================== */
+  nav {
+    position: fixed;
+    top: 36px; left: 0; right: 0;
+    z-index: 999;
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(130,139,55,0.2);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-logo-img {
+    height: 44px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Oswald', sans-serif;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    transition: all 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--accent-green); }
+  .btn-donate-nav {
+    font-family: 'Oswald', sans-serif;
+    background: var(--olive);
+    color: var(--white) !important;
+    padding: 10px 28px;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+    opacity: 1 !important;
+  }
+  .btn-donate-nav:hover { background: var(--accent-green); }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 90px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.15) 70%, transparent 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.85) 100%),
+      url('jaguar-hero.png');
+    background-size: cover, cover, cover;
+    background-position: center, center, 70% center;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 65% 45%, rgba(75,80,32,0.2) 0%, transparent 55%);
+  }
+  /* Subtle field lines - 30% football */
+  .field-lines {
+    position: absolute; inset: 0;
+    opacity: 0.025;
+    background-image:
+      linear-gradient(90deg, var(--white) 1px, transparent 1px),
+      linear-gradient(var(--white) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .center-circle {
+    position: absolute;
+    width: 450px; height: 450px;
+    border: 1px solid rgba(254,254,254,0.03);
+    border-radius: 50%;
+    top: 50%; left: 68%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 1400px;
+    margin: 0 auto; padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(130,139,55,0.12);
+    border: 1px solid rgba(130,139,55,0.25);
+    padding: 6px 16px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-green);
+    margin-bottom: 20px;
+  }
+  .badge-live {
+    width: 8px; height: 8px;
+    background: #e53e3e;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero-hashtag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+    display: block;
+    background: linear-gradient(90deg, var(--gold) 0%, #f5e6a3 25%, var(--gold) 50%, #f5e6a3 75%, var(--gold) 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(200,168,78,0.3));
+  }
+  .hero-hashtag::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: var(--gold);
+    animation: hashPulse 2s ease-in-out infinite;
+  }
+  .hero-hashtag::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    animation: hashLine 2.5s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 300% center; }
+    100% { background-position: 0% center; }
+  }
+  @keyframes hashLine {
+    0%, 100% { width: 40px; opacity: 0.4; }
+    50% { width: 200px; opacity: 1; }
+  }
+  @keyframes hashPulse {
+    0%, 100% { opacity: 0.4; height: 50%; }
+    50% { opacity: 1; height: 80%; }
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 6.5vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  .hero-title .line-accent {
+    color: var(--accent-green);
+  }
+
+  .hero-paradox {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-style: italic;
+    color: rgba(254,254,254,0.6);
+    margin-bottom: 12px;
+    line-height: 1.5;
+    max-width: 500px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(254,254,254,0.65);
+    max-width: 500px;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .hero-subtitle strong { color: var(--white); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    font-family: 'Oswald', sans-serif;
+    background: var(--olive);
+    color: var(--white);
+    padding: 16px 48px;
+    border: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  .btn-primary:hover::after { left: 100%; }
+  .btn-primary:hover { background: var(--accent-green); transform: translateY(-2px); }
+
+  .btn-secondary {
+    font-family: 'Oswald', sans-serif;
+    background: transparent;
+    color: var(--white);
+    padding: 16px 36px;
+    border: 1px solid rgba(254,254,254,0.25);
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--olive); color: var(--accent-green); }
+
+  .hero-deducible {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(254,254,254,0.4);
+    letter-spacing: 1px;
+  }
+  .hero-deducible strong { color: var(--gold); }
+
+  /* ===================== SCOREBUG ===================== */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-end;
+  }
+
+  .scorebug {
+    background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(75,80,32,0.25));
+    border: 1px solid rgba(130,139,55,0.35);
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+  .scorebug::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--olive), var(--accent-green), var(--olive));
+  }
+  .scorebug-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: rgba(75,80,32,0.25);
+    border-bottom: 1px solid rgba(130,139,55,0.15);
+  }
+  .scorebug-league {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-green);
+  }
+  .scorebug-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e53e3e;
+  }
+  .scorebug-live .dot {
+    width: 6px; height: 6px;
+    background: #e53e3e;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+  }
+  .scorebug-body {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .scorebug-team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+  }
+  .scorebug-team.away { flex-direction: row-reverse; text-align: right; }
+  .team-icon {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .team-icon.jaguar { background: rgba(130,139,55,0.2); border: 1px solid var(--olive); }
+  .team-icon.extincion { background: rgba(229,62,62,0.12); border: 1px solid rgba(229,62,62,0.35); }
+  .team-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .team-name small {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(254,254,254,0.45);
+    letter-spacing: 0;
+  }
+  .scorebug-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+  }
+  .score-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    min-width: 36px;
+    text-align: center;
+  }
+  .score-number.winning { color: var(--accent-green); }
+  .scorebug-currency {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    color: rgba(254,254,254,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    align-self: center;
+  }
+  .scorebug-footer {
+    padding: 8px 16px;
+    background: rgba(75,80,32,0.15);
+    border-top: 1px solid rgba(130,139,55,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .scorebug-minute {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: var(--accent-green);
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+  .scorebug-minute small {
+    font-size: 10px;
+    color: rgba(254,254,254,0.4);
+    margin-right: 2px;
+  }
+  .scorebug-minute span { animation: blink 1s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .scorebug-stat {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(254,254,254,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Live donation feed */
+  .donation-feed {
+    width: 400px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(130,139,55,0.15);
+    overflow: hidden;
+  }
+  .donation-feed-header {
+    padding: 10px 16px;
+    background: rgba(75,80,32,0.15);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--olive);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(130,139,55,0.1);
+  }
+  .donation-item {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(254,254,254,0.03);
+    animation: slideIn 0.5s ease;
+  }
+  .donation-item:last-child { border: none; }
+  @keyframes slideIn { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }
+  .donation-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .donation-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--dark-olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-green);
+    font-family: 'Oswald', sans-serif;
+  }
+  .donation-name { font-size: 13px; font-weight: 500; }
+  .donation-name small {
+    display: block;
+    font-size: 10px;
+    color: rgba(254,254,254,0.4);
+    font-weight: 400;
+  }
+  .donation-amount {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent-green);
+  }
+  .donation-amount.highlight-gold { color: var(--gold); }
+
+  /* ===================== STATS BAR ===================== */
+  .stats-bar {
+    background: var(--dark-olive);
+    padding: 44px 48px;
+    display: flex;
+    justify-content: center;
+    gap: 72px;
+    position: relative;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--olive), transparent);
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .stat-number .counter { display: inline; }
+  .stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-green);
+  }
+  .stat-sublabel {
+    font-size: 11px;
+    color: rgba(254,254,254,0.35);
+    margin-top: 4px;
+  }
+
+  /* ===================== SECTION GENERAL ===================== */
+  .section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-header { margin-bottom: 60px; }
+  .section-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--olive);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 4.5vw, 60px);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .section-title .accent { color: var(--accent-green); }
+  .section-subtitle {
+    font-size: 16px;
+    color: rgba(254,254,254,0.55);
+    max-width: 600px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ===================== LA PARADOJA ===================== */
+  .paradoja-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .paradoja-visual {
+    position: relative;
+    background: linear-gradient(135deg, rgba(75,80,32,0.15), rgba(0,0,0,0.6));
+    border: 1px solid rgba(130,139,55,0.2);
+    padding: 48px;
+    text-align: center;
+  }
+  .paradoja-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--gold));
+  }
+  .paradoja-stat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .paradoja-stat {
+    text-align: center;
+  }
+  .paradoja-stat .big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .paradoja-stat .big.gold { color: var(--gold); }
+  .paradoja-stat .label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(254,254,254,0.5);
+  }
+  .paradoja-arrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .paradoja-arrow small {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-green);
+  }
+  .paradoja-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(254,254,254,0.6);
+    border-top: 1px solid rgba(130,139,55,0.2);
+    padding-top: 20px;
+    line-height: 1.6;
+  }
+  .paradoja-quote cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: var(--olive);
+    margin-top: 8px;
+  }
+
+  .paradoja-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .paradoja-text h3 .accent { color: var(--accent-green); }
+  .paradoja-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(254,254,254,0.6);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .paradoja-text p strong { color: var(--white); font-weight: 600; }
+  .especie-sombrilla {
+    background: rgba(75,80,32,0.1);
+    border: 1px solid rgba(130,139,55,0.2);
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+  .especie-sombrilla .label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--olive);
+    margin-bottom: 8px;
+  }
+  .especie-sombrilla p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  /* ===================== CADA PESO TIENE DESTINO ===================== */
+  .destino-section {
+    background: linear-gradient(180deg, var(--black), rgba(75,80,32,0.1), var(--black));
+    padding: 100px 0;
+  }
+  .destino-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .destino-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 60px;
+  }
+  .destino-card {
+    background: linear-gradient(180deg, rgba(75,80,32,0.08), rgba(0,0,0,0.4));
+    border: 1px solid rgba(130,139,55,0.12);
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .destino-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--olive);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .destino-card:hover::before { transform: scaleX(1); }
+  .destino-card:hover { border-color: rgba(130,139,55,0.3); transform: translateY(-3px); }
+  .destino-icon { font-size: 28px; margin-bottom: 12px; }
+  .destino-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .destino-title span { color: var(--orange); }
+  .destino-desc {
+    font-size: 12px;
+    color: rgba(254,254,254,0.45);
+    line-height: 1.6;
+  }
+
+  /* ===================== DONAR ===================== */
+  .donar-section {
+    padding: 100px 0;
+  }
+  .donar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .donate-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .tier {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(130,139,55,0.15);
+    padding: 36px;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .tier.featured {
+    border-color: var(--olive);
+    transform: scale(1.03);
+  }
+  .tier.featured::before {
+    content: 'Más elegido';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--olive);
+    padding: 4px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .tier:hover { border-color: var(--olive); transform: translateY(-4px); }
+  .tier.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .tier-icon { font-size: 32px; margin-bottom: 14px; }
+  .tier-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--olive);
+    margin-bottom: 10px;
+  }
+  .tier-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .tier-amount small { font-size: 22px; color: rgba(254,254,254,0.45); }
+  .tier-desc {
+    font-size: 13px;
+    color: rgba(254,254,254,0.5);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .tier-btn {
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--olive);
+    background: transparent;
+    color: var(--white);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .tier-btn:hover { background: var(--olive); }
+  .tier.featured .tier-btn { background: var(--olive); }
+  .tier.featured .tier-btn:hover { background: var(--accent-green); }
+  .tier-deducible {
+    font-size: 10px;
+    color: var(--gold);
+    margin-top: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ===================== UGC SOCIAL SECTION ===================== */
+  .ugc-section {
+    background: linear-gradient(180deg, rgba(75,80,32,0.08), var(--black));
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  .ugc-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .ugc-hashtag-hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .ugc-hashtag-hero h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4.5vw, 60px);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .ugc-hashtag-hero h2 .gold { color: var(--gold); }
+  .ugc-hashtag-hero p {
+    font-size: 16px;
+    color: rgba(254,254,254,0.5);
+    max-width: 550px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .ugc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .ugc-card {
+    background: rgba(75,80,32,0.08);
+    border: 1px solid rgba(130,139,55,0.1);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+  .ugc-card:hover { border-color: rgba(130,139,55,0.35); transform: scale(1.02); z-index: 2; }
+  .ugc-card.featured-ugc {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .ugc-card .ugc-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+    z-index: 1;
+  }
+  .ugc-card-content {
+    position: relative;
+    z-index: 2;
+  }
+  .ugc-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .ugc-avatar {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--dark-olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-green);
+    font-family: 'Oswald', sans-serif;
+  }
+  .ugc-username {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .ugc-platform {
+    font-size: 10px;
+    color: rgba(254,254,254,0.4);
+  }
+  .ugc-text {
+    font-size: 12px;
+    color: rgba(254,254,254,0.7);
+    line-height: 1.5;
+  }
+  .ugc-text .hashtag { color: var(--gold); font-weight: 600; }
+
+  .ugc-cta-row {
+    text-align: center;
+  }
+  .ugc-cta-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(254,254,254,0.6);
+    margin-bottom: 16px;
+  }
+  .ugc-cta-text span { color: var(--gold); }
+  .btn-ugc {
+    font-family: 'Oswald', sans-serif;
+    background: transparent;
+    color: var(--gold);
+    padding: 14px 36px;
+    border: 1px solid var(--gold);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .btn-ugc:hover { background: var(--gold); color: var(--black); }
+
+  /* ===================== RESPALDO CIENTÍFICO ===================== */
+  .ciencia-section {
+    padding: 80px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .ciencia-card {
+    background: linear-gradient(135deg, rgba(75,80,32,0.1), rgba(0,0,0,0.5));
+    border: 1px solid rgba(130,139,55,0.2);
+    padding: 48px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .ciencia-badge-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .ancj-logo-img {
+    width: 100px;
+    height: auto;
+  }
+  .ciencia-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(254,254,254,0.6);
+    font-weight: 300;
+  }
+  .ciencia-text p strong { color: var(--white); font-weight: 600; }
+  .ciencia-text .dr-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .ciencia-text .dr-title {
+    font-size: 12px;
+    color: var(--olive);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  /* ===================== CTA FINAL ===================== */
+  .cta-section {
+    background: var(--dark-olive);
+    padding: 80px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(130,139,55,0.2), transparent 70%);
+  }
+  .cta-content { position: relative; z-index: 2; }
+  .cta-hashtag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(34px, 4vw, 52px);
+    margin-bottom: 12px;
+    line-height: 1.05;
+  }
+  .cta-sub {
+    font-size: 16px;
+    color: rgba(254,254,254,0.65);
+    margin-bottom: 32px;
+    font-weight: 300;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .btn-cta-large {
+    font-family: 'Oswald', sans-serif;
+    background: var(--white);
+    color: var(--dark-olive);
+    padding: 18px 56px;
+    border: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+  .btn-cta-large:hover { background: var(--accent-green); color: var(--white); transform: scale(1.05); }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid rgba(130,139,55,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footer-left {
+    font-size: 12px;
+    color: rgba(254,254,254,0.3);
+  }
+  .footer-left a { color: var(--olive); text-decoration: none; }
+  .footer-right {
+    display: flex; gap: 24px;
+  }
+  .footer-right a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(254,254,254,0.35);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-right a:hover { color: var(--olive); }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 1024px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-right { align-items: flex-start; margin-top: 32px; }
+    .scorebug, .donation-feed { width: 100%; }
+    .paradoja-grid { grid-template-columns: 1fr; }
+    .destino-grid { grid-template-columns: repeat(2, 1fr); }
+    .donate-tiers { grid-template-columns: 1fr; }
+    .ugc-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 180px); }
+    .ugc-card.featured-ugc { grid-column: span 2; grid-row: span 1; }
+    .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
+    nav { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .ciencia-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== TICKER ===================== -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<nav>
+  <div class="nav-logo">
+    <img src="jaguar-logo.svg" alt="México Salvando al Jaguar" class="nav-logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#paradoja">La Paradoja</a></li>
+    <li><a href="#destino">Tu Impacto</a></li>
+    <li><a href="#social">Comunidad</a></li>
+    <li><a href="#donar" class="btn-donate-nav">Donar</a></li>
+  </ul>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="field-lines"></div>
+  <div class="center-circle"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="badge-live"></div>
+        Campaña activa · 2026
+      </div>
+      <div class="hero-hashtag" id="heroHashtag">#MiSelecciónEsElJaguar</div>
+      <h1 class="hero-title">
+        México Salvando<br>
+        <span class="line-accent">Al Jaguar,</span> 2026
+      </h1>
+      <p class="hero-paradox">
+        Si el jaguar representa a México ante el mundo, México debe protegerlo.
+      </p>
+      <p class="hero-subtitle">
+        <strong>5,300 jaguares</strong> sobreviven en la selva mexicana. Mientras el mundo celebra al jaguar como mascota del Mundial, en su hábitat real está desapareciendo. Convierte la euforia del 2026 por el jaguar en una <strong>acción de conservación real</strong>.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('donar').scrollIntoView({behavior:'smooth'})">Donar</button>
+        <button class="btn-secondary" onclick="document.getElementById('paradoja').scrollIntoView({behavior:'smooth'})">Conocer más</button>
+      </div>
+      <div class="hero-deducible"><strong>100% deducible de impuestos</strong> · Respaldado por la ANCJ e instituciones científicas</div>
+    </div>
+
+    <div class="hero-right">
+      <!-- SCOREBUG -->
+      <div class="scorebug">
+        <div class="scorebug-header">
+          <div class="scorebug-league">Conservación en vivo · México 2026</div>
+          <div class="scorebug-live"><div class="dot"></div>EN VIVO</div>
+        </div>
+        <div class="scorebug-body">
+          <div class="scorebug-team home">
+            <div class="team-icon jaguar">🐆</div>
+            <div class="team-name">Recaudado<small>#MiSelecciónEsElJaguar</small></div>
+          </div>
+          <div class="scorebug-score">
+            <div class="score-number winning" id="scoreHome">$1,247,500</div>
+          </div>
+          <div class="scorebug-currency">MXN</div>
+        </div>
+        <div class="scorebug-footer">
+          <div class="scorebug-minute" id="countdown"></div>
+          <div class="scorebug-stat">Tiempo restante</div>
+        </div>
+      </div>
+
+      <!-- LIVE DONATIONS -->
+      <div class="donation-feed">
+        <div class="donation-feed-header">🐆 Últimas donaciones</div>
+        <div id="donationList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS BAR ===================== -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number"><span class="counter" data-target="5300">0</span></div>
+    <div class="stat-label">Jaguares en México</div>
+    <div class="stat-sublabel">Censo Nacional 2024</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">+<span class="counter" data-target="30">0</span>%</div>
+    <div class="stat-label">Crecimiento</div>
+    <div class="stat-sublabel">Desde 2010 (4,000 → 5,300)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span class="counter" data-target="5">0</span>B+</div>
+    <div class="stat-label">Audiencia Global</div>
+    <div class="stat-sublabel">Mundial FIFA 2026</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+    <div class="stat-label">Sedes Mexicanas</div>
+    <div class="stat-sublabel">CDMX · Guadalajara · Monterrey</div>
+  </div>
+</div>
+
+<!-- ===================== LA PARADOJA ===================== -->
+<section class="section" id="paradoja">
+  <div class="section-header">
+    <div class="section-badge">La Paradoja</div>
+    <h2 class="section-title">El Jaguar Representará A México<br>Ante El Mundo. <span class="accent">Pero Está Desapareciendo.</span></h2>
+    <p class="section-subtitle">
+      En 2026, el evento deportivo más grande del planeta usará al jaguar como símbolo de México. Aprovechemos esta coyuntura histórica para convertir la euforia en protección real.
+    </p>
+  </div>
+
+  <div class="paradoja-grid">
+    <div class="paradoja-visual">
+      <div class="paradoja-stat-row">
+        <div class="paradoja-stat">
+          <div class="big">4,000</div>
+          <div class="label">Jaguares en 2010</div>
+        </div>
+        <div class="paradoja-arrow">
+          →
+          <small>+30%</small>
+        </div>
+        <div class="paradoja-stat">
+          <div class="big gold">5,300</div>
+          <div class="label">Jaguares en 2024</div>
+        </div>
+      </div>
+      <div class="paradoja-quote">
+        "Estamos en la sexta extinción masiva. Lo que hagamos en los próximos 20 años definirá el futuro de la biodiversidad. Esta es una batalla que sí se puede ganar."
+        <cite>— Dr. Gerardo J. Ceballos González, ANCJ</cite>
+      </div>
+    </div>
+
+    <div class="paradoja-text">
+      <h3>México tiene la <span class="accent">mejor ciencia en conservación de jaguares</span> del mundo</h3>
+      <p>
+        Gracias a la <strong>Alianza Nacional para la Conservación del Jaguar (ANCJ)</strong>, liderada por el <strong>Dr. Gerardo Ceballos</strong> — investigador del Instituto de Ecología de la UNAM y ganador del Premio Nacional de Ciencias — México logró el único caso de éxito global en recuperación de jaguares.
+      </p>
+      <p>
+        La ciencia funciona. La conservación da resultados. Pero necesita recursos para seguir adelante.
+      </p>
+      <div class="especie-sombrilla">
+        <div class="label">Especie Sombrilla</div>
+        <p>
+          El jaguar es el <strong>depredador tope</strong> de su ecosistema. Al protegerlo, proteges el ciclo del agua, la flora, la fauna diversa y la biodiversidad completa. Un solo acto de conservación con <strong>impacto masivo</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CADA PESO TIENE DESTINO ===================== -->
+<section class="destino-section" id="destino">
+  <div class="destino-inner">
+    <div class="section-header">
+      <div class="section-badge">Transparencia</div>
+      <h2 class="section-title">Cada Peso <span class="accent">Tiene Destino</span></h2>
+      <p class="section-subtitle">
+        Tu donación se distribuye en cinco áreas estratégicas de conservación con reportes de impacto trimestrales.
+      </p>
+    </div>
+    <div class="destino-grid">
+      <div class="destino-card">
+        <div class="destino-icon">🌿</div>
+        <div class="destino-title">Protección del <span>Hábitat</span></div>
+        <div class="destino-desc">Hectáreas de selva protegidas y restauradas en corredores biológicos clave.</div>
+      </div>
+      <div class="destino-card">
+        <div class="destino-icon">📡</div>
+        <div class="destino-title">Monitoreo <span>Satelital</span></div>
+        <div class="destino-desc">Collares GPS y cámaras trampa para seguimiento científico en tiempo real.</div>
+      </div>
+      <div class="destino-card">
+        <div class="destino-icon">📢</div>
+        <div class="destino-title">Campaña de <span>Concientización</span></div>
+        <div class="destino-desc">Contenido que eduque, emocione y convierta en redes, medios y espacios públicos.</div>
+      </div>
+      <div class="destino-card">
+        <div class="destino-icon">🏘️</div>
+        <div class="destino-title">Comunidades <span>Rurales</span></div>
+        <div class="destino-desc">Apoyo a poblaciones que conviven con el jaguar, programas de coexistencia.</div>
+      </div>
+      <div class="destino-card">
+        <div class="destino-icon">🔬</div>
+        <div class="destino-title">Investigación <span>Científica</span></div>
+        <div class="destino-desc">Estudios de campo, censos poblacionales y genética para decisiones basadas en datos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DONAR ===================== -->
+<section class="donar-section" id="donar">
+  <div class="donar-inner">
+    <div class="section-header">
+      <div class="section-badge">#MiSelecciónEsElJaguar</div>
+      <h2 class="section-title">Elige Protegerlo. <span class="accent">Dona Hoy.</span></h2>
+      <p class="section-subtitle">
+        No importa el monto — cada aportación es un acto de conservación. Elige tu nivel y sé parte del equipo que está salvando al jaguar.
+      </p>
+    </div>
+    <div class="donate-tiers">
+      <div class="tier">
+        <div class="tier-icon">🌱</div>
+        <div class="tier-name">Guardián</div>
+        <div class="tier-amount">$200 <small>MXN</small></div>
+        <div class="tier-desc">Protege 1m² de selva durante un año. Recibes tu certificado digital de Guardián del Jaguar.</div>
+        <button class="tier-btn">Donar $200</button>
+        <div class="tier-deducible">100% deducible</div>
+      </div>
+      <div class="tier featured">
+        <div class="tier-icon">🐆</div>
+        <div class="tier-name">Protector</div>
+        <div class="tier-amount">$1,000 <small>MXN</small></div>
+        <div class="tier-desc">Financia una cámara trampa por 6 meses. Recibe fotos reales de jaguares captados gracias a tu apoyo.</div>
+        <button class="tier-btn">Donar $1,000</button>
+        <div class="tier-deducible">100% deducible</div>
+      </div>
+      <div class="tier">
+        <div class="tier-icon">🛡️</div>
+        <div class="tier-name">Defensor</div>
+        <div class="tier-amount">$5,000 <small>MXN</small></div>
+        <div class="tier-desc">Patrocina un mes de patrullaje en reserva natural. Recibe reportes trimestrales del jaguar que proteges.</div>
+        <button class="tier-btn">Donar $5,000</button>
+        <div class="tier-deducible">100% deducible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UGC SOCIAL ===================== -->
+<section class="ugc-section" id="social">
+  <div class="ugc-inner">
+    <div class="ugc-hashtag-hero">
+      <h2><span class="gold">#MiSelecciónEsElJaguar</span><br>En Redes</h2>
+      <p>Miles de personas ya eligieron al jaguar este 2026. Comparte tu apoyo y únete a la conversación.</p>
+    </div>
+
+    <div class="ugc-grid" id="ugcGrid">
+      <!-- Populated by JS -->
+    </div>
+
+    <div class="ugc-cta-row">
+      <div class="ugc-cta-text">Publica con <span>#MiSelecciónEsElJaguar</span> y aparece aquí</div>
+      <button class="btn-ugc">Compartir en redes</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESPALDO CIENTÍFICO ===================== -->
+<section class="ciencia-section">
+  <div class="ciencia-card">
+    <div class="ciencia-badge-area">
+      <img src="ancj.svg" alt="ANCJ" class="ancj-logo-img">
+    </div>
+    <div class="ciencia-text">
+      <div class="dr-name">Dr. Gerardo J. Ceballos González</div>
+      <div class="dr-title">Presidente de la ANCJ · Investigador del Instituto de Ecología, UNAM · Premio Nacional de Ciencias</div>
+      <p>
+        Reconocido entre los científicos más influyentes del mundo, es responsable del <strong>único caso de éxito global en recuperación de jaguares: +30% de población en 14 años</strong> (último censo 2024). Cada peso donado tiene respaldo científico de clase mundial.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-section">
+  <div class="cta-content">
+    <div class="cta-hashtag">#MiSelecciónEsElJaguar</div>
+    <h2 class="cta-title">Este 2026, El Mundo Verá Al Jaguar.<br>Aseguremos Que Siga Existiendo.</h2>
+    <p class="cta-sub">
+      La euforia deportiva es temporal. La conservación es para siempre. Haz que tu donación cuente.
+    </p>
+    <button class="btn-cta-large" onclick="document.getElementById('donar').scrollIntoView({behavior:'smooth'})">Donar Ahora</button>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-left">
+    <img src="jaguar-logo.svg" alt="México Salvando al Jaguar" style="height:28px;filter:brightness(0) invert(1);opacity:0.5;vertical-align:middle;margin-right:12px;">
+    © 2026 México Salvando al Jaguar · <a href="#">ANCJ</a> · Estrategia: Arconte
+  </div>
+  <div class="footer-right">
+    <a href="#">Transparencia</a>
+    <a href="#">Contacto</a>
+    <a href="#">Prensa</a>
+  </div>
+</footer>
+
+<!-- ===================== JS ===================== -->
+<script>
+  // ---- Donation data ----
+  const donations = [
+    { name: "María G.", city: "CDMX", amount: "$2,000" },
+    { name: "Carlos R.", city: "Guadalajara", amount: "$500" },
+    { name: "Sofía L.", city: "Mérida", amount: "$5,000" },
+    { name: "Diego M.", city: "Monterrey", amount: "$1,000" },
+    { name: "Anónimo", city: "Cancún", amount: "$200" },
+    { name: "Empresa Verde SA", city: "CDMX", amount: "$50,000" },
+    { name: "Juan P.", city: "Puebla", amount: "$1,500" },
+    { name: "Ana K.", city: "Oaxaca", amount: "$3,000" },
+    { name: "Roberto S.", city: "Chiapas", amount: "$800" },
+    { name: "Fundación Selva", city: "Quintana Roo", amount: "$25,000" },
+    { name: "Paty N.", city: "Veracruz", amount: "$200" },
+    { name: "Miguel Á.", city: "Tabasco", amount: "$1,000" },
+  ];
+
+  // ---- Ticker ----
+  function buildTicker() {
+    const track = document.getElementById('tickerTrack');
+    let html = '';
+    for (let i = 0; i < 3; i++) {
+      donations.forEach(d => {
+        html += `<div class="ticker-item">
+          🐆 <span class="donor-name">${d.name}</span> de ${d.city} donó
+          <span class="amount">${d.amount}</span> MXN
+          · #MiSelecciónEsElJaguar
+        </div>`;
+      });
+    }
+    track.innerHTML = html;
+  }
+  buildTicker();
+
+  // ---- Donation Feed ----
+  function renderFeed(list) {
+    const el = document.getElementById('donationList');
+    el.innerHTML = list.map((d, i) => `
+      <div class="donation-item" style="animation-delay:${i*0.08}s">
+        <div class="donation-info">
+          <div class="donation-avatar">${d.name.charAt(0)}</div>
+          <div class="donation-name">${d.name}<small>${d.city} · Hace ${Math.floor(Math.random()*45)+1} min</small></div>
+        </div>
+        <div class="donation-amount ${parseInt(d.amount.replace(/\D/g,''))>=10000?'highlight-gold':''}">${d.amount}</div>
+      </div>
+    `).join('');
+  }
+  renderFeed(donations.slice(0,5));
+  setInterval(() => renderFeed([...donations].sort(()=>Math.random()-0.5).slice(0,5)), 6000);
+
+  // ---- Counter animation ----
+  const counters = document.querySelectorAll('.counter');
+  const co = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const dur = 2000;
+        const inc = target / (dur / 16);
+        let cur = 0;
+        const t = setInterval(() => {
+          cur += inc;
+          if (cur >= target) { cur = target; clearInterval(t); }
+          el.textContent = Math.floor(cur).toLocaleString('es-MX');
+        }, 16);
+        co.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => co.observe(c));
+
+  // ---- Countdown to Dec 31, 2026 ----
+  function updateCountdown() {
+    const end = new Date('2026-12-31T23:59:59');
+    const now = new Date();
+    const diff = end - now;
+    if (diff <= 0) { document.getElementById('countdown').textContent = '¡Tiempo!'; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('countdown').innerHTML =
+      `${d}<small>d</small> ${String(h).padStart(2,'0')}<small>h</small> ${String(m).padStart(2,'0')}<small>m</small> ${String(s).padStart(2,'0')}<span>s</span>`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ---- UGC Grid ----
+  const ugcPosts = [
+    { user: "@maria_selvamx", platform: "Instagram", text: "Este año mi selección no es un equipo de futbol. Mi selección es el jaguar. 🐆🇲🇽 <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: true },
+    { user: "@carlos_nat", platform: "X (Twitter)", text: "5,300 jaguares. Que en 2030 sean más. Yo ya doné. <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: false },
+    { user: "@ecovida_mx", platform: "TikTok", text: "POV: descubres que la mascota del mundial está en peligro de extinción real 🫠 <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: false },
+    { user: "@ana_oaxaca", platform: "Instagram", text: "Fui al evento de conservación en Oaxaca. Increíble lo que hace la ANCJ. Gracias Dr. Ceballos 🙏 <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: false },
+    { user: "@verde_collective", platform: "Instagram", text: "Como marca decidimos que nuestra mejor inversión este año es proteger al rey de la selva. 🌿🐆 <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: false },
+    { user: "@paty_chiapas", platform: "X (Twitter)", text: "Mis hijos me preguntaron por qué el jaguar del mundial se ve feliz pero el real no. Ahí les expliqué todo. <span class='hashtag'>#MiSelecciónEsElJaguar</span>", featured: false },
+  ];
+
+  function buildUGC() {
+    const grid = document.getElementById('ugcGrid');
+    grid.innerHTML = ugcPosts.map(p => `
+      <div class="ugc-card ${p.featured?'featured-ugc':''}">
+        <div class="ugc-bg"></div>
+        <div class="ugc-card-content">
+          <div class="ugc-user">
+            <div class="ugc-avatar">${p.user.charAt(1).toUpperCase()}</div>
+            <div>
+              <div class="ugc-username">${p.user}</div>
+              <div class="ugc-platform">${p.platform}</div>
+            </div>
+          </div>
+          <div class="ugc-text">${p.text}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+  buildUGC();
+</script>
+
+</body>
+</html>
