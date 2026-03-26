@@ -983,118 +983,198 @@
   }
   .btn-ugc:hover { background: var(--gold); color: var(--black); }
 
-  /* ===================== RESPALDO CIENTÍFICO ===================== */
-  .ciencia-section {
-    padding: 80px 48px;
+  /* ===================== ALINEACIÓN DE PATROCINADORES ===================== */
+  .patrocinadores-section {
+    background: linear-gradient(180deg, rgba(75,80,32,0.06), var(--black), rgba(75,80,32,0.06));
+    padding: 100px 0;
+  }
+  .patrocinadores-inner {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 48px;
   }
-  .ciencia-card {
-    background: linear-gradient(135deg, rgba(75,80,32,0.1), rgba(0,0,0,0.5));
-    border: 1px solid rgba(130,139,55,0.2);
-    padding: 48px;
+  .patrocinadores-grid {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 40px;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 60px;
   }
-  .ciencia-badge-area {
+  .patrocinador-card {
+    background: linear-gradient(180deg, rgba(75,80,32,0.08), rgba(0,0,0,0.5));
+    border: 1px solid rgba(130,139,55,0.12);
+    padding: 40px 24px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
   }
-  .ciencia-photo {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(130,139,55,0.4);
-    filter: grayscale(15%);
+  .patrocinador-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--olive), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.3s;
   }
-  .ancj-logo-img {
-    width: 100px;
-    height: auto;
-  }
-  .ciencia-text p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(254,254,254,0.6);
-    font-weight: 300;
-  }
-  .ciencia-text p strong { color: var(--white); font-weight: 600; }
-  .ciencia-text .dr-name {
+  .patrocinador-card:hover::before { transform: scaleX(1); }
+  .patrocinador-card:hover { border-color: rgba(130,139,55,0.3); transform: translateY(-3px); }
+  .patrocinador-logo-slot {
+    width: 120px;
+    height: 80px;
+    border: 2px dashed rgba(130,139,55,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    color: var(--white);
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  .ciencia-text .dr-title {
-    font-size: 12px;
-    color: var(--olive);
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-  }
-
-  /* ===================== CTA FINAL ===================== */
-  .cta-section {
-    background:
-      linear-gradient(180deg, rgba(75,80,32,0.92) 0%, rgba(0,0,0,0.85) 100%),
-      url('JaguarGoldLight.png');
-    background-size: cover, cover;
-    background-position: center, center;
-    padding: 80px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(200,168,78,0.15), transparent 70%);
-  }
-  .cta-content { position: relative; z-index: 2; }
-  .cta-hashtag {
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-  .cta-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(34px, 4vw, 52px);
-    margin-bottom: 12px;
-    line-height: 1.05;
-  }
-  .cta-sub {
-    font-size: 16px;
-    color: rgba(254,254,254,0.65);
-    margin-bottom: 32px;
-    font-weight: 300;
-    max-width: 550px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
-  .btn-cta-large {
-    font-family: 'Oswald', sans-serif;
-    background: var(--white);
-    color: var(--dark-olive);
-    padding: 18px 56px;
-    border: none;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    cursor: pointer;
-    font-weight: 700;
+    color: rgba(254,254,254,0.25);
     transition: all 0.3s;
   }
-  .btn-cta-large:hover { background: var(--accent-green); color: var(--white); transform: scale(1.05); }
+  .patrocinador-card:hover .patrocinador-logo-slot {
+    border-color: rgba(200,168,78,0.4);
+    color: rgba(254,254,254,0.4);
+  }
+  .patrocinador-tier {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .patrocinador-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .patrocinador-desc {
+    font-size: 12px;
+    color: rgba(254,254,254,0.45);
+    line-height: 1.6;
+  }
+  .patrocinadores-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+  .patrocinadores-cta p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(254,254,254,0.5);
+    margin-bottom: 20px;
+  }
+  .btn-patrocinador {
+    font-family: 'Oswald', sans-serif;
+    background: transparent;
+    color: var(--gold);
+    padding: 14px 40px;
+    border: 1px solid var(--gold);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .btn-patrocinador:hover { background: var(--gold); color: var(--black); }
+
+  /* ===================== HISTORIAS DESDE EL TERRITORIO ===================== */
+  .historias-section {
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  .historias-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .historias-strips {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 60px;
+  }
+  .historia-strip {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.4s;
+  }
+  .historia-strip:hover { transform: scale(1.01); }
+  .historia-strip-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--dark-olive);
+    transition: transform 0.6s;
+  }
+  .historia-strip:hover .historia-strip-bg { transform: scale(1.05); }
+  .historia-strip-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.6) 45%, transparent 100%);
+  }
+  .historia-strip-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 48px;
+    max-width: 600px;
+  }
+  .historia-strip-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .historia-strip-badge::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .historia-strip h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .historia-strip h3 .accent { color: var(--accent-green); }
+  .historia-strip p {
+    font-size: 14px;
+    color: rgba(254,254,254,0.6);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+  }
+  .historia-strip p strong { color: var(--white); font-weight: 600; }
+  .historia-strip-number {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    line-height: 1;
+    color: rgba(254,254,254,0.03);
+    z-index: 1;
+  }
 
   /* ===================== FOOTER ===================== */
   footer {
@@ -1138,8 +1218,11 @@
     .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
     nav { padding: 14px 24px; }
     .nav-links { display: none; }
-    .ciencia-card { grid-template-columns: 1fr; text-align: center; }
-    .ciencia-photo { width: 180px; height: 180px; }
+    .patrocinadores-grid { grid-template-columns: repeat(2, 1fr); }
+    .historia-strip { height: 240px; }
+    .historia-strip-content { padding: 28px 24px; }
+    .historia-strip h3 { font-size: 28px; }
+    .historia-strip-number { display: none; }
   }
 </style>
 </head>
@@ -1299,6 +1382,49 @@
   </div>
 </section>
 
+<!-- ===================== ALINEACIÓN DE PATROCINADORES ===================== -->
+<section class="patrocinadores-section" id="patrocinadores">
+  <div class="patrocinadores-inner">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-badge">Patrocinadores 2026</div>
+      <h2 class="section-title">Alineación De <span class="accent">Patrocinadores</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;">
+        Marcas y organizaciones que ya eligieron al jaguar como su selección. Tu logo aquí es una declaración de principios.
+      </p>
+    </div>
+    <div class="patrocinadores-grid">
+      <div class="patrocinador-card">
+        <div class="patrocinador-logo-slot">Tu logo</div>
+        <div class="patrocinador-tier">MVP</div>
+        <div class="patrocinador-name">Espacio Disponible</div>
+        <div class="patrocinador-desc">Patrocinio principal con máxima visibilidad en campaña, eventos y medios.</div>
+      </div>
+      <div class="patrocinador-card">
+        <div class="patrocinador-logo-slot">Tu logo</div>
+        <div class="patrocinador-tier">Capitán</div>
+        <div class="patrocinador-name">Espacio Disponible</div>
+        <div class="patrocinador-desc">Presencia destacada en materiales de campaña y reportes de impacto.</div>
+      </div>
+      <div class="patrocinador-card">
+        <div class="patrocinador-logo-slot">Tu logo</div>
+        <div class="patrocinador-tier">Titular</div>
+        <div class="patrocinador-name">Espacio Disponible</div>
+        <div class="patrocinador-desc">Reconocimiento en plataformas digitales y comunicados oficiales.</div>
+      </div>
+      <div class="patrocinador-card">
+        <div class="patrocinador-logo-slot">Tu logo</div>
+        <div class="patrocinador-tier">Convocado</div>
+        <div class="patrocinador-name">Espacio Disponible</div>
+        <div class="patrocinador-desc">Mención en redes sociales y página de la campaña.</div>
+      </div>
+    </div>
+    <div class="patrocinadores-cta">
+      <p>¿Tu marca quiere ser parte del equipo que está salvando al jaguar?</p>
+      <button class="btn-patrocinador">Quiero Ser Patrocinador</button>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CADA PESO TIENE DESTINO ===================== -->
 <section class="destino-section" id="destino">
   <div class="destino-inner">
@@ -1334,6 +1460,51 @@
         <div class="destino-icon">🔬</div>
         <div class="destino-title">Investigación <span>Científica</span></div>
         <div class="destino-desc">Estudios de campo, censos poblacionales y genética para decisiones basadas en datos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HISTORIAS DESDE EL TERRITORIO ===================== -->
+<section class="historias-section" id="historias">
+  <div class="historias-inner">
+    <div class="section-header">
+      <div class="section-badge">Desde el territorio</div>
+      <h2 class="section-title">Historias Que <span class="accent">La Selva Nos Cuenta</span></h2>
+      <p class="section-subtitle">
+        Detrás de cada dato hay una historia real. Estas son las voces del territorio donde la conservación ocurre todos los días.
+      </p>
+    </div>
+    <div class="historias-strips">
+      <div class="historia-strip">
+        <div class="historia-strip-bg" style="background-image:url('Rastreo.png');"></div>
+        <div class="historia-strip-overlay"></div>
+        <div class="historia-strip-number">01</div>
+        <div class="historia-strip-content">
+          <div class="historia-strip-badge">Monitoreo</div>
+          <h3>Un Jaguar Que Nadie <span class="accent">Había Visto</span></h3>
+          <p>En 2024, una cámara trampa financiada por donadores como tú capturó a un <strong>macho adulto</strong> en un corredor biológico que se creía abandonado. Ese registro cambió el mapa de conservación de Quintana Roo.</p>
+        </div>
+      </div>
+      <div class="historia-strip">
+        <div class="historia-strip-bg" style="background-image:url('Cultural.png');"></div>
+        <div class="historia-strip-overlay"></div>
+        <div class="historia-strip-number">02</div>
+        <div class="historia-strip-content">
+          <div class="historia-strip-badge">Comunidad</div>
+          <h3>De Cazadores A <span class="accent">Guardianes</span></h3>
+          <p>En la Sierra de Tamaulipas, un programa de coexistencia transformó a <strong>12 familias ganaderas</strong> en monitores de fauna. Hoy reportan avistamientos en vez de conflictos.</p>
+        </div>
+      </div>
+      <div class="historia-strip">
+        <div class="historia-strip-bg" style="background-image:url('Sombrilla.png');"></div>
+        <div class="historia-strip-overlay"></div>
+        <div class="historia-strip-number">03</div>
+        <div class="historia-strip-content">
+          <div class="historia-strip-badge">Hábitat</div>
+          <h3>800 Hectáreas <span class="accent">Recuperadas</span></h3>
+          <p>Un corredor biológico en Calakmul fue restaurado conectando dos poblaciones de jaguares que estaban <strong>genéticamente aisladas</strong>. Hoy, las cámaras registran cruce entre ambos grupos.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1394,35 +1565,6 @@
       <div class="ugc-cta-text">Publica con <span>#MiSelecciónEsElJaguar</span> y aparece aquí</div>
       <button class="btn-ugc">Compartir en redes</button>
     </div>
-  </div>
-</section>
-
-<!-- ===================== RESPALDO CIENTÍFICO ===================== -->
-<section class="ciencia-section">
-  <div class="ciencia-card">
-    <div class="ciencia-badge-area">
-      <img src="GerardoJaguar.png" alt="Dr. Gerardo Ceballos con jaguar" class="ciencia-photo">
-      <img src="logoANCJ.png" alt="ANCJ" class="ancj-logo-img">
-    </div>
-    <div class="ciencia-text">
-      <div class="dr-name">Dr. Gerardo J. Ceballos González</div>
-      <div class="dr-title">Presidente de la ANCJ · Investigador del Instituto de Ecología, UNAM · Premio Nacional de Ciencias</div>
-      <p>
-        Reconocido entre los científicos más influyentes del mundo, es responsable del <strong>único caso de éxito global en recuperación de jaguares: +30% de población en 14 años</strong> (último censo 2024). Cada peso donado tiene respaldo científico de clase mundial.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA FINAL ===================== -->
-<section class="cta-section">
-  <div class="cta-content">
-    <div class="cta-hashtag">#MiSelecciónEsElJaguar</div>
-    <h2 class="cta-title">Este 2026, El Mundo Verá Al Jaguar.<br>Aseguremos Que Siga Existiendo.</h2>
-    <p class="cta-sub">
-      La euforia deportiva es temporal. La conservación es para siempre. Haz que tu donación cuente.
-    </p>
-    <button class="btn-cta-large" onclick="document.getElementById('donar').scrollIntoView({behavior:'smooth'})">Donar Ahora</button>
   </div>
 </section>
 
