@@ -473,61 +473,84 @@
     background: rgba(0,0,0,0.55);
     border: 1px solid rgba(130,139,55,0.15);
     overflow: hidden;
+    backdrop-filter: blur(8px);
   }
   .donation-feed-header {
-    padding: 10px 16px;
+    padding: 12px 16px;
     background: rgba(75,80,32,0.15);
+    border-bottom: 1px solid rgba(130,139,55,0.1);
+  }
+  .donation-feed-header .crono-title {
     font-family: 'Oswald', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--olive);
+    letter-spacing: 3px;
+    color: var(--gold);
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid rgba(130,139,55,0.1);
   }
-  .donation-item {
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(254,254,254,0.03);
-    animation: slideIn 0.5s ease;
-  }
-  .donation-item:last-child { border: none; }
-  @keyframes slideIn { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }
-  .donation-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .donation-avatar {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--dark-olive);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent-green);
-    font-family: 'Oswald', sans-serif;
-  }
-  .donation-name { font-size: 13px; font-weight: 500; }
-  .donation-name small {
-    display: block;
+  .donation-feed-header .crono-sub {
     font-size: 10px;
-    color: rgba(254,254,254,0.4);
-    font-weight: 400;
+    color: rgba(254,254,254,0.35);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
   }
-  .donation-amount {
+  .crono-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(254,254,254,0.04);
+    animation: slideIn 0.5s ease;
+    position: relative;
+    padding-left: 28px;
+  }
+  .crono-item::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 18px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--olive);
+  }
+  .crono-item::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 26px;
+    width: 1px;
+    bottom: 0;
+    background: rgba(130,139,55,0.15);
+  }
+  .crono-item:last-child::after { display: none; }
+  .crono-item:last-child { border: none; }
+  @keyframes slideIn { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }
+  .crono-time {
     font-family: 'Oswald', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--accent-green);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(254,254,254,0.3);
+    margin-bottom: 3px;
   }
-  .donation-amount.highlight-gold { color: var(--gold); }
+  .crono-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+  .crono-context {
+    font-size: 10px;
+    color: rgba(254,254,254,0.35);
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+  .crono-context .crono-amount {
+    color: var(--accent-green);
+    font-weight: 600;
+  }
 
   /* ===================== STATS BAR ===================== */
   .stats-bar {
@@ -743,7 +766,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 30%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.85) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.85) 100%),
       url('FondoTuImpacto.png');
     background-size: cover, cover;
     background-position: center, center;
@@ -1494,9 +1517,12 @@
         </div>
       </div>
 
-      <!-- LIVE DONATIONS -->
+      <!-- CRONOLOGÍA -->
       <div class="donation-feed">
-        <div class="donation-feed-header">🐆 Últimas donaciones</div>
+        <div class="donation-feed-header">
+          <div class="crono-title">Cronología 🐆⏱️</div>
+          <div class="crono-sub">Noticias, hitos y movimientos clave en tiempo real</div>
+        </div>
         <div id="donationList"></div>
       </div>
     </div>
@@ -1854,21 +1880,31 @@
   }
   buildTicker();
 
-  // ---- Donation Feed ----
-  function renderFeed(list) {
+  // ---- Cronología Feed ----
+  const cronoItems = [
+    { time: 'Hoy · 19 min', headline: 'Grupo Expansión', context: 'CDMX · Nuevo Aliado' },
+    { time: 'Hoy · 13 min', headline: 'Nuevo aliado se integra a la difusión', context: 'Cancún · Cobertura regional activada' },
+    { time: 'Hoy · 11 min', headline: 'Avanza el apoyo ciudadano', context: 'Oaxaca', amount: '$300,000' },
+    { time: 'Hoy · 26 min', headline: 'Se fortalece el monitoreo en territorio', context: 'Monterrey · Aporte destinado a campo' },
+    { time: 'Hoy · 4 min', headline: 'Más personas se unen al esfuerzo', context: 'Tabasco', amount: '$1,000' },
+    { time: 'Hoy · 37 min', headline: 'Campaña gana tracción en redes', context: 'Nacional · +2,400 menciones hoy' },
+    { time: 'Hoy · 8 min', headline: 'Nueva cámara trampa activada', context: 'Calakmul · Corredor sur restaurado' },
+    { time: 'Hoy · 22 min', headline: 'Donación corporativa recibida', context: 'Guadalajara', amount: '$50,000' },
+    { time: 'Hoy · 15 min', headline: 'Cobertura en medios nacionales', context: 'CDMX · Entrevista en televisión abierta' },
+    { time: 'Hoy · 2 min', headline: 'Comunidad reporta avistamiento', context: 'Sierra de Tamaulipas · Hembra con cría' },
+  ];
+  function renderCrono(items) {
     const el = document.getElementById('donationList');
-    el.innerHTML = list.map((d, i) => `
-      <div class="donation-item" style="animation-delay:${i*0.08}s">
-        <div class="donation-info">
-          <div class="donation-avatar">${d.name.charAt(0)}</div>
-          <div class="donation-name">${d.name}<small>${d.city} · Hace ${Math.floor(Math.random()*45)+1} min</small></div>
-        </div>
-        <div class="donation-amount ${parseInt(d.amount.replace(/\D/g,''))>=10000?'highlight-gold':''}">${d.amount}</div>
+    el.innerHTML = items.map((c, i) => `
+      <div class="crono-item" style="animation-delay:${i*0.08}s">
+        <div class="crono-time">${c.time}</div>
+        <div class="crono-headline">${c.headline}</div>
+        <div class="crono-context">${c.context}${c.amount ? ' · <span class="crono-amount">Donación de ' + c.amount + '</span>' : ''}</div>
       </div>
     `).join('');
   }
-  renderFeed(donations.slice(0,5));
-  setInterval(() => renderFeed([...donations].sort(()=>Math.random()-0.5).slice(0,5)), 6000);
+  renderCrono(cronoItems.slice(0,5));
+  setInterval(() => renderCrono([...cronoItems].sort(()=>Math.random()-0.5).slice(0,5)), 6000);
 
   // ---- Counter animation ----
   const counters = document.querySelectorAll('.counter');
