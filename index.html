@@ -920,16 +920,8 @@
     line-height: 1.6;
   }
 
-  .ugc-embed-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  .behold-container {
     margin-bottom: 40px;
-    justify-items: center;
-  }
-  .ugc-embed-grid blockquote {
-    margin: 0 !important;
-    min-width: 0 !important;
   }
 
   .ugc-cta-row {
@@ -944,20 +936,6 @@
     margin-bottom: 16px;
   }
   .ugc-cta-text span { color: var(--gold); }
-  .btn-ugc {
-    font-family: 'Oswald', sans-serif;
-    background: transparent;
-    color: var(--gold);
-    padding: 14px 36px;
-    border: 1px solid var(--gold);
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-  .btn-ugc:hover { background: var(--gold); color: var(--black); }
   .ugc-social-follow {
     display: flex;
     align-items: center;
@@ -1396,7 +1374,6 @@
     .scorebug, .donation-feed { width: 100%; }
     .paradoja-grid { grid-template-columns: 1fr; }
     .destino-grid { grid-template-columns: repeat(2, 1fr); }
-    .ugc-embed-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
     nav { padding: 14px 24px; }
     .nav-links { display: none; }
@@ -1536,7 +1513,7 @@
     /* UGC */
     .ugc-section { padding: 60px 0; }
     .ugc-inner { padding: 0 24px; }
-    .ugc-embed-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .behold-container { margin-bottom: 32px; }
 
     /* Ciencia */
     .ciencia-section { padding: 60px 24px; }
@@ -1657,9 +1634,8 @@
     /* UGC */
     .ugc-section { padding: 48px 0; }
     .ugc-inner { padding: 0 16px; }
-    .ugc-embed-grid { grid-template-columns: 1fr; gap: 12px; }
+    .behold-container { margin-bottom: 24px; }
     .ugc-cta-text { font-size: 14px; letter-spacing: 2px; }
-    .btn-ugc { padding: 12px 28px; font-size: 13px; }
     .ugc-social-follow { gap: 14px; margin-top: 20px; }
     .ugc-social-follow span { font-size: 13px; letter-spacing: 2px; }
 
@@ -2029,13 +2005,8 @@
       <p>Miles de personas ya eligieron al jaguar este 2026. Comparte tu apoyo y únete a la conversación.</p>
     </div>
 
-    <div class="ugc-embed-grid">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWVC97sjOpT/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWR-W2MAa27/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWFlpBWjKNa/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWQMOIPjd_M/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWNCGjGDND3/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVhxgE8jiUK/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+    <div class="behold-container">
+      <behold-widget feed-id="u7E0k2TqIofw0Wv4auA7"></behold-widget>
     </div>
 
     <div class="ugc-cta-row">
@@ -2233,7 +2204,12 @@
   });
 
 </script>
-<script async src="//www.instagram.com/embed.js"></script>
+<script>
+  (() => {
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";d.head.append(s);
+  })();
+</script>
 
 
 </body>
