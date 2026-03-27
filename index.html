@@ -811,6 +811,7 @@
   .destino-card:hover::before { transform: scaleX(1); }
   .destino-card:hover { border-color: rgba(130,139,55,0.3); transform: translateY(-3px); }
   .destino-icon { font-size: 28px; margin-bottom: 12px; }
+  .destino-icon img { width: 48px; height: 48px; object-fit: contain; }
   .destino-title {
     font-family: 'Oswald', sans-serif;
     font-size: 15px;
@@ -1489,6 +1490,30 @@
 
   /* ===================== TABLET / PHABLET ===================== */
   @media (max-width: 768px) {
+    /* Mobile background images (portrait) */
+    .hero-bg {
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.15) 70%, transparent 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.85) 100%),
+        url('jaguar-hero-mobile.png');
+      background-position: center, center, center;
+    }
+    #paradoja::before {
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.85) 100%),
+        url('FondoParadoja-mobile.png');
+    }
+    .impacto-wrapper::before {
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.85) 100%),
+        url('FondoTuImpacto-mobile.png');
+    }
+    .cta-section {
+      background-image:
+        linear-gradient(180deg, rgba(75,80,32,0.92) 0%, rgba(0,0,0,0.85) 100%),
+        url('JaguarGoldLight-mobile.png');
+    }
+
     /* Global sections */
     .section { padding: 60px 24px; }
     .section-header { margin-bottom: 40px; }
@@ -1969,27 +1994,27 @@
     </div>
     <div class="destino-grid">
       <div class="destino-card">
-        <div class="destino-icon">🌿</div>
+        <div class="destino-icon"><img src="Arbol.png" alt="Protección del Hábitat"></div>
         <div class="destino-title">Protección del <span>Hábitat</span></div>
         <div class="destino-desc">Hectáreas de selva protegidas y restauradas en corredores biológicos clave.</div>
       </div>
       <div class="destino-card">
-        <div class="destino-icon">📡</div>
+        <div class="destino-icon"><img src="Rastreo.png" alt="Monitoreo Satelital"></div>
         <div class="destino-title">Monitoreo <span>Satelital</span></div>
         <div class="destino-desc">Collares GPS y cámaras trampa para seguimiento científico en tiempo real.</div>
       </div>
       <div class="destino-card">
-        <div class="destino-icon">📢</div>
+        <div class="destino-icon"><img src="Medios.png" alt="Campaña de Concientización"></div>
         <div class="destino-title">Campaña de <span>Concientización</span></div>
         <div class="destino-desc">Contenido que eduque, emocione y convierta en redes, medios y espacios públicos.</div>
       </div>
       <div class="destino-card">
-        <div class="destino-icon">🏘️</div>
+        <div class="destino-icon"><img src="Comunidad.png" alt="Comunidades Rurales"></div>
         <div class="destino-title">Comunidades <span>Rurales</span></div>
         <div class="destino-desc">Apoyo a poblaciones que conviven con el jaguar, programas de coexistencia.</div>
       </div>
       <div class="destino-card">
-        <div class="destino-icon">🔬</div>
+        <div class="destino-icon"><img src="Cientifico.png" alt="Investigación Científica"></div>
         <div class="destino-title">Investigación <span>Científica</span></div>
         <div class="destino-desc">Estudios de campo, censos poblacionales y genética para decisiones basadas en datos.</div>
       </div>
@@ -2050,33 +2075,33 @@
     </div>
     <div class="historias-strips">
       <div class="historia-strip">
-        <div class="historia-strip-bg" style="background-image:url('Rastreo.png');"></div>
+        <div class="historia-strip-bg" style="background-image:url('ElRey.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">01</div>
         <div class="historia-strip-content">
           <div class="historia-strip-badge">Monitoreo</div>
-          <h3>Un Jaguar Que Nadie <span class="accent">Había Visto</span></h3>
-          <p>En 2024, una cámara trampa financiada por donadores como tú capturó a un <strong>macho adulto</strong> en un corredor biológico que se creía abandonado. Ese registro cambió el mapa de conservación de Quintana Roo.</p>
+          <h3>El Rey Apareció <span class="accent">En Sonora</span></h3>
+          <p>Durante el Censo Nacional de 2024, una cámara registró en Nácori Chico a un <strong>macho jaguar de tamaño imponente</strong> dentro de un predio de Naturalia A.C. Su corpulencia destacó de inmediato frente a otros registros. Por eso lo nombraron El Rey: una presencia extraordinaria que recuerda que todavía existen gigantes silenciosos recorriendo el norte del país.</p>
         </div>
       </div>
       <div class="historia-strip">
-        <div class="historia-strip-bg" style="background-image:url('Cultural.png');"></div>
+        <div class="historia-strip-bg" style="background-image:url('Secreto.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">02</div>
         <div class="historia-strip-content">
-          <div class="historia-strip-badge">Comunidad</div>
-          <h3>De Cazadores A <span class="accent">Guardianes</span></h3>
-          <p>En la Sierra de Tamaulipas, un programa de coexistencia transformó a <strong>12 familias ganaderas</strong> en monitores de fauna. Hoy reportan avistamientos en vez de conflictos.</p>
+          <div class="historia-strip-badge">Educación</div>
+          <h3>Un Libro Para Defender <span class="accent">Al Jaguar</span></h3>
+          <p>La conservación también empieza en la imaginación de niñas y niños. Con la presentación de <strong>El Secreto de los Jaguares</strong>, esta causa llegó a nuevos públicos a través de una historia que acerca la importancia del jaguar, su hábitat y su protección. Sembrar asombro desde temprano también es una forma de conservar: nadie protege lo que no conoce.</p>
         </div>
       </div>
       <div class="historia-strip">
-        <div class="historia-strip-bg" style="background-image:url('Sombrilla.png');"></div>
+        <div class="historia-strip-bg" style="background-image:url('Capturado.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">03</div>
         <div class="historia-strip-content">
-          <div class="historia-strip-badge">Hábitat</div>
-          <h3>800 Hectáreas <span class="accent">Recuperadas</span></h3>
-          <p>Un corredor biológico en Calakmul fue restaurado conectando dos poblaciones de jaguares que estaban <strong>genéticamente aisladas</strong>. Hoy, las cámaras registran cruce entre ambos grupos.</p>
+          <div class="historia-strip-badge">Monitoreo</div>
+          <h3>La Primera Captura <span class="accent">Del Censo 2026</span></h3>
+          <p>En el arranque del nuevo censo, el <strong>primer jaguar ya fue registrado en campo</strong> por el equipo de monitoreo. Esta imagen confirma que la vigilancia, la ciencia y el trabajo en territorio siguen dando resultados. Cada nuevo registro ayuda a entender por dónde se mueve la especie y qué zonas deben protegerse con mayor urgencia.</p>
         </div>
       </div>
     </div>
