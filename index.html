@@ -324,6 +324,14 @@
     letter-spacing: 1px;
   }
   .hero-deducible strong { color: var(--gold); }
+  .hero-deducible p { margin: 0; }
+  .hero-ancj-logo {
+    display: block;
+    margin-top: 12px;
+    width: 180px;
+    opacity: 0.45;
+    filter: grayscale(1) brightness(2);
+  }
 
   /* ===================== SCOREBUG ===================== */
   .hero-right {
@@ -1560,6 +1568,7 @@
     .btn-primary { padding: 0; font-size: 14px; width: 100%; height: 56px; display: flex; align-items: center; justify-content: center; }
     .btn-secondary { padding: 0; font-size: 13px; width: 100%; height: 56px; display: flex; align-items: center; justify-content: center; }
     .hero-deducible { font-size: 10px; margin-top: 12px; }
+    .hero-ancj-logo { width: 100%; max-width: 200px; margin: 12px auto 0; }
 
     /* Scorebug */
     .scorebug-header { padding: 8px 12px; }
@@ -1748,7 +1757,10 @@
         <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-primary">Donar</a>
         <button class="btn-secondary" onclick="document.getElementById('paradoja').scrollIntoView({behavior:'smooth'})">Conocer más</button>
       </div>
-      <div class="hero-deducible"><strong>100% deducible de impuestos</strong> · Respaldado por la ANCJ e instituciones científicas</div>
+      <div class="hero-deducible">
+        <p><strong>100% deducible de impuestos</strong> · Respaldado por la Alianza Nacional para la Conservación del Jaguar</p>
+        <img src="ANCJ_Logo_Simple.png" alt="Alianza Nacional para la Conservación del Jaguar" class="hero-ancj-logo">
+      </div>
     </div>
 
     <div class="hero-right">
