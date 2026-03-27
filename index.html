@@ -1398,6 +1398,27 @@
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+  /* Nav overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 998;
+  }
+  .nav-overlay.active { display: block; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 1024px) {
     .hero-content { grid-template-columns: 1fr; }
@@ -1423,10 +1444,11 @@
       gap: 0;
       border-bottom: 1px solid rgba(130,139,55,0.3);
     }
-    .nav-links.active li { padding: 12px 0; border-bottom: 1px solid rgba(254,254,254,0.05); }
-    .nav-links.active a { font-size: 16px; letter-spacing: 3px; }
-    .historia-strip { height: 240px; }
-    .historia-strip-content { padding: 28px 24px; }
+    .nav-links.active li { padding: 0; border-bottom: 1px solid rgba(254,254,254,0.05); }
+    .nav-links.active a { font-size: 16px; letter-spacing: 3px; min-height: 48px; display: flex; align-items: center; }
+    .historia-strip { height: auto; flex-direction: column; align-items: stretch; }
+    .historia-strip-bg { position: relative; height: 220px; flex-shrink: 0; }
+    .historia-strip-content { padding: 28px 24px; max-width: 100%; }
     .historia-strip h3 { font-size: 28px; }
     .historia-strip-number { display: none; }
     .ciencia-card { grid-template-columns: 1fr; text-align: center; }
@@ -1503,7 +1525,8 @@
     .paradoja-stat .big { font-size: 36px; }
     .paradoja-stat .label { font-size: 10px; }
     .paradoja-arrow { font-size: 16px; }
-    .paradoja-quote { font-size: 14px; }
+    .paradoja-quote { font-size: 14px; position: relative; padding-left: 24px; }
+    .paradoja-quote::before { content: '\201C'; position: absolute; left: -4px; top: -8px; font-size: 48px; color: var(--gold); opacity: 0.3; font-family: 'Playfair Display', serif; line-height: 1; }
     .paradoja-text h3 { font-size: 28px; }
     .paradoja-text p { font-size: 14px; }
     .especie-sombrilla { padding: 16px 20px; }
@@ -1525,21 +1548,23 @@
     .tier.featured { transform: none; }
     .tier.featured:hover { transform: translateY(-4px); }
 
-    /* Patrocinadores */
+    /* Patrocinadores — static grid on mobile */
     .patrocinadores-section { padding: 36px 0; }
     .patrocinadores-inner { padding: 0 24px; }
     .patrocinadores-track-wrapper::before,
-    .patrocinadores-track-wrapper::after { width: 40px; }
-    .patrocinadores-track { gap: 40px; }
-    .patrocinador-logo-item { width: 150px; height: 70px; }
+    .patrocinadores-track-wrapper::after { display: none; }
+    .patrocinadores-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 24px; }
+    .patrocinador-logo-item { width: calc(50% - 12px); height: 70px; }
     .patrocinador-logo-item img { max-width: 130px; max-height: 60px; }
 
-    /* Historias */
+    /* Historias — image above, text below */
     .historias-section { padding: 60px 0; }
     .historias-inner { padding: 0 24px; }
     .historias-strips { margin-top: 40px; }
-    .historia-strip { height: 200px; }
-    .historia-strip-content { padding: 24px 20px; }
+    .historia-strip { height: auto; flex-direction: column; align-items: stretch; }
+    .historia-strip-bg { position: relative; height: 200px; flex-shrink: 0; }
+    .historia-strip-overlay { background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%); }
+    .historia-strip-content { padding: 24px 20px; max-width: 100%; }
     .historia-strip h3 { font-size: 24px; }
     .historia-strip p { font-size: 13px; }
 
@@ -1551,14 +1576,14 @@
     /* Ciencia */
     .ciencia-section { padding: 60px 24px; }
     .ciencia-card { padding: 32px; gap: 24px; }
-    .ciencia-photo { width: 180px; height: 180px; }
+    .ciencia-photo { width: 150px; height: 150px; border-color: var(--gold); }
     .ancj-logo-img { width: 120px; }
     .ciencia-text .dr-name { font-size: 20px; }
     .ciencia-text p { font-size: 15px; }
 
     /* CTA */
     .cta-section { padding: 60px 24px; }
-    .btn-cta-large { padding: 16px 40px; font-size: 16px; }
+    .btn-cta-large { padding: 16px 40px; font-size: 16px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
 
     /* Footer */
     footer { padding: 32px 20px; gap: 16px; flex-direction: column; align-items: center; }
@@ -1589,9 +1614,9 @@
     .hero-hashtag::before { left: -10px; width: 3px; }
     .hero-paradox { font-size: 14px; margin-bottom: 8px; }
     .hero-subtitle { font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
-    .hero-actions { gap: 12px; width: 100%; }
-    .btn-primary { padding: 14px 32px; font-size: 14px; flex: 1; text-align: center; }
-    .btn-secondary { padding: 14px 24px; font-size: 13px; flex: 1; text-align: center; }
+    .hero-actions { gap: 12px; width: 100%; flex-direction: column; }
+    .btn-primary { padding: 0; font-size: 14px; width: 100%; height: 56px; display: flex; align-items: center; justify-content: center; }
+    .btn-secondary { padding: 0; font-size: 13px; width: 100%; height: 56px; display: flex; align-items: center; justify-content: center; }
     .hero-deducible { font-size: 10px; margin-top: 12px; }
 
     /* Scorebug */
@@ -1619,8 +1644,8 @@
     .paradoja-grid { gap: 24px; }
     .paradoja-visual { padding: 24px; }
     .paradoja-stat .big { font-size: 32px; }
-    .paradoja-stat-row { gap: 12px; }
-    .paradoja-arrow { font-size: 14px; }
+    .paradoja-stat-row { gap: 16px; flex-direction: column; }
+    .paradoja-arrow { font-size: 14px; transform: rotate(90deg); }
     .paradoja-quote { font-size: 13px; padding-top: 16px; }
     .paradoja-text h3 { font-size: 24px; }
     .paradoja-text p { font-size: 13px; }
@@ -1642,7 +1667,7 @@
     .tier-amount { font-size: 36px; }
     .tier-amount small { font-size: 16px; }
     .tier-desc { font-size: 12px; margin-bottom: 20px; }
-    .tier-btn { padding: 12px; font-size: 13px; }
+    .tier-btn { padding: 0 12px; font-size: 13px; min-height: 52px; display: flex; align-items: center; justify-content: center; }
 
     /* Patrocinadores */
     .patrocinadores-section { padding: 28px 0; }
@@ -1661,8 +1686,8 @@
     .historias-section { padding: 48px 0; }
     .historias-inner { padding: 0 16px; }
     .historias-strips { margin-top: 32px; gap: 12px; }
-    .historia-strip { height: 180px; }
-    .historia-strip-content { padding: 20px 16px; max-width: 100%; }
+    .historia-strip-bg { height: 180px; }
+    .historia-strip-content { padding: 20px 16px; }
     .historia-strip h3 { font-size: 20px; margin-bottom: 6px; }
     .historia-strip p { font-size: 12px; line-height: 1.5; }
     .historia-strip-badge { font-size: 9px; letter-spacing: 2px; margin-bottom: 8px; }
@@ -1688,15 +1713,15 @@
     /* CTA */
     .cta-section { padding: 48px 16px; }
     .cta-sub { font-size: 14px; margin-bottom: 24px; }
-    .btn-cta-large { padding: 16px 32px; font-size: 16px; width: 100%; }
+    .btn-cta-large { padding: 0; font-size: 16px; width: 100%; min-height: 60px; }
 
     /* Footer */
     footer { padding: 28px 16px; }
     .footer-left { font-size: 11px; }
     .footer-right { gap: 12px; }
     .footer-right a { font-size: 11px; letter-spacing: 1px; }
-    .footer-social a { width: 28px; height: 28px; }
-    .footer-social svg { width: 14px; height: 14px; }
+    .footer-social a { width: 40px; height: 40px; }
+    .footer-social svg { width: 18px; height: 18px; }
   }
 
   /* ===================== SMALL SCREENS ===================== */
@@ -1723,7 +1748,7 @@
     .patrocinador-logo-item img { max-width: 85px; max-height: 38px; }
 
     .historias-inner { padding: 0 12px; }
-    .historia-strip { height: 160px; }
+    .historia-strip-bg { height: 150px; }
     .historia-strip h3 { font-size: 18px; }
 
     .ugc-inner { padding: 0 12px; }
@@ -1758,6 +1783,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
@@ -1850,7 +1876,7 @@
 
 <!-- ===================== LA PARADOJA ===================== -->
 <section class="section" id="paradoja">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge">La Paradoja</div>
     <h2 class="section-title">El Jaguar Representará A México<br>Ante El Mundo. <span class="accent">Pero Está Desapareciendo.</span></h2>
     <p class="section-subtitle">
@@ -1858,7 +1884,7 @@
     </p>
   </div>
 
-  <div class="paradoja-grid">
+  <div class="paradoja-grid reveal">
     <div class="paradoja-visual">
       <div class="paradoja-stat-row">
         <div class="paradoja-stat">
@@ -1901,7 +1927,7 @@
 <!-- ===================== ALINEACIÓN DE PATROCINADORES ===================== -->
 <section class="patrocinadores-section" id="patrocinadores">
   <div class="patrocinadores-inner">
-    <div class="section-header" style="text-align:center;">
+    <div class="section-header reveal" style="text-align:center;">
       <div class="section-badge">Patrocinadores 2026</div>
       <h2 class="section-title">Alineación De <span class="accent">Patrocinadores</span></h2>
       <p class="section-subtitle" style="margin:0 auto;">
@@ -1910,17 +1936,17 @@
     </div>
     <div class="patrocinadores-track-wrapper">
       <div class="patrocinadores-track">
-        <div class="patrocinador-logo-item"><img src="Patro1.png" alt="Patrocinador 1"></div>
-        <div class="patrocinador-logo-item"><img src="patro2.png" alt="Patrocinador 2"></div>
-        <div class="patrocinador-logo-item"><img src="patro3.png" alt="Patrocinador 3"></div>
-        <div class="patrocinador-logo-item"><img src="patro4.png" alt="Patrocinador 4"></div>
-        <div class="patrocinador-logo-item"><img src="patro5.png" alt="Patrocinador 5"></div>
+        <div class="patrocinador-logo-item"><img src="Patro1.png" alt="Patrocinador 1" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro2.png" alt="Patrocinador 2" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro3.png" alt="Patrocinador 3" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro4.png" alt="Patrocinador 4" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro5.png" alt="Patrocinador 5" loading="lazy"></div>
         <!-- duplicado para loop infinito -->
-        <div class="patrocinador-logo-item"><img src="Patro1.png" alt="Patrocinador 1"></div>
-        <div class="patrocinador-logo-item"><img src="patro2.png" alt="Patrocinador 2"></div>
-        <div class="patrocinador-logo-item"><img src="patro3.png" alt="Patrocinador 3"></div>
-        <div class="patrocinador-logo-item"><img src="patro4.png" alt="Patrocinador 4"></div>
-        <div class="patrocinador-logo-item"><img src="patro5.png" alt="Patrocinador 5"></div>
+        <div class="patrocinador-logo-item"><img src="Patro1.png" alt="Patrocinador 1" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro2.png" alt="Patrocinador 2" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro3.png" alt="Patrocinador 3" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro4.png" alt="Patrocinador 4" loading="lazy"></div>
+        <div class="patrocinador-logo-item"><img src="patro5.png" alt="Patrocinador 5" loading="lazy"></div>
       </div>
     </div>
     <div class="patrocinadores-cta">
@@ -1936,7 +1962,7 @@
 <!-- ===================== CADA PESO TIENE DESTINO ===================== -->
 <section class="destino-section" id="destino">
   <div class="destino-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-badge">Transparencia</div>
       <h2 class="section-title">Cada Peso <span class="accent">Tiene Destino</span></h2>
       <p class="section-subtitle">
@@ -1944,28 +1970,28 @@
       </p>
     </div>
     <div class="destino-grid">
-      <div class="destino-card">
-        <div class="destino-icon"><img src="Arbol.png" alt="Protección del Hábitat"></div>
+      <div class="destino-card reveal">
+        <div class="destino-icon"><img src="Arbol.png" alt="Protección del Hábitat" loading="lazy"></div>
         <div class="destino-title">Protección del <span>Hábitat</span></div>
         <div class="destino-desc">Hectáreas de selva protegidas y restauradas en corredores biológicos clave.</div>
       </div>
-      <div class="destino-card">
-        <div class="destino-icon"><img src="Rastreo.png" alt="Monitoreo Satelital"></div>
+      <div class="destino-card reveal">
+        <div class="destino-icon"><img src="Rastreo.png" alt="Monitoreo Satelital" loading="lazy"></div>
         <div class="destino-title">Monitoreo <span>Satelital</span></div>
         <div class="destino-desc">Collares GPS y cámaras trampa para seguimiento científico en tiempo real.</div>
       </div>
-      <div class="destino-card">
-        <div class="destino-icon"><img src="Medios.png" alt="Campaña de Concientización"></div>
+      <div class="destino-card reveal">
+        <div class="destino-icon"><img src="Medios.png" alt="Campaña de Concientización" loading="lazy"></div>
         <div class="destino-title">Campaña de <span>Concientización</span></div>
         <div class="destino-desc">Contenido que eduque, emocione y convierta en redes, medios y espacios públicos.</div>
       </div>
-      <div class="destino-card">
-        <div class="destino-icon"><img src="Comunidad.png" alt="Comunidades Rurales"></div>
+      <div class="destino-card reveal">
+        <div class="destino-icon"><img src="Comunidad.png" alt="Comunidades Rurales" loading="lazy"></div>
         <div class="destino-title">Comunidades <span>Rurales</span></div>
         <div class="destino-desc">Apoyo a poblaciones que conviven con el jaguar, programas de coexistencia.</div>
       </div>
-      <div class="destino-card">
-        <div class="destino-icon"><img src="Cientifico.png" alt="Investigación Científica"></div>
+      <div class="destino-card reveal">
+        <div class="destino-icon"><img src="Cientifico.png" alt="Investigación Científica" loading="lazy"></div>
         <div class="destino-title">Investigación <span>Científica</span></div>
         <div class="destino-desc">Estudios de campo, censos poblacionales y genética para decisiones basadas en datos.</div>
       </div>
@@ -1976,7 +2002,7 @@
 <!-- ===================== DONAR ===================== -->
 <section class="donar-section" id="donar">
   <div class="donar-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-badge">#MiSeleccionEsElJaguar</div>
       <h2 class="section-title">Elige Protegerlo. <span class="accent">Dona Hoy.</span></h2>
       <p class="section-subtitle">
@@ -1984,7 +2010,7 @@
       </p>
     </div>
     <div class="donate-tiers">
-      <div class="tier">
+      <div class="tier reveal">
         <div class="tier-icon">🌱</div>
         <div class="tier-name">Guardián</div>
         <div class="tier-amount">$200 <small>MXN</small></div>
@@ -1992,7 +2018,7 @@
         <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $200</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
-      <div class="tier featured">
+      <div class="tier featured reveal">
         <div class="tier-icon">🐆</div>
         <div class="tier-name">Protector</div>
         <div class="tier-amount">$1,000 <small>MXN</small></div>
@@ -2000,7 +2026,7 @@
         <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $1,000</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
-      <div class="tier">
+      <div class="tier reveal">
         <div class="tier-icon">🛡️</div>
         <div class="tier-name">Defensor</div>
         <div class="tier-amount">$5,000 <small>MXN</small></div>
@@ -2017,7 +2043,7 @@
 <!-- ===================== HISTORIAS DESDE EL TERRITORIO ===================== -->
 <section class="historias-section" id="historias">
   <div class="historias-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-badge">Desde el territorio</div>
       <h2 class="section-title">Historias Que <span class="accent">La Selva Nos Cuenta</span></h2>
       <p class="section-subtitle">
@@ -2025,7 +2051,7 @@
       </p>
     </div>
     <div class="historias-strips">
-      <div class="historia-strip">
+      <div class="historia-strip reveal">
         <div class="historia-strip-bg" style="background-image:url('ElRey.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">01</div>
@@ -2035,7 +2061,7 @@
           <p>Durante el Censo Nacional de 2024, una cámara registró en Nácori Chico a un <strong>macho jaguar de tamaño imponente</strong> dentro de un predio de Naturalia A.C. Su corpulencia destacó de inmediato frente a otros registros. Por eso lo nombraron El Rey: una presencia extraordinaria que recuerda que todavía existen gigantes silenciosos recorriendo el norte del país.</p>
         </div>
       </div>
-      <div class="historia-strip">
+      <div class="historia-strip reveal">
         <div class="historia-strip-bg" style="background-image:url('Secreto.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">02</div>
@@ -2045,7 +2071,7 @@
           <p>La conservación también empieza en la imaginación de niñas y niños. Con la presentación de <strong>El Secreto de los Jaguares</strong>, esta causa llegó a nuevos públicos a través de una historia que acerca la importancia del jaguar, su hábitat y su protección. Sembrar asombro desde temprano también es una forma de conservar: nadie protege lo que no conoce.</p>
         </div>
       </div>
-      <div class="historia-strip">
+      <div class="historia-strip reveal">
         <div class="historia-strip-bg" style="background-image:url('Capturado.jpg');"></div>
         <div class="historia-strip-overlay"></div>
         <div class="historia-strip-number">03</div>
@@ -2092,10 +2118,10 @@
 
 <!-- ===================== RESPALDO CIENTÍFICO ===================== -->
 <section class="ciencia-section">
-  <div class="ciencia-card">
+  <div class="ciencia-card reveal">
     <div class="ciencia-badge-area">
-      <img src="GerardoJaguar.png" alt="Dr. Gerardo Ceballos con jaguar" class="ciencia-photo">
-      <img src="ANCJ_Logo_Simple.png" alt="ANCJ" class="ancj-logo-img">
+      <img src="GerardoJaguar.png" alt="Dr. Gerardo Ceballos con jaguar" class="ciencia-photo" loading="lazy">
+      <img src="ANCJ_Logo_Simple.png" alt="ANCJ" class="ancj-logo-img" loading="lazy">
     </div>
     <div class="ciencia-text">
       <div class="dr-name">Dr. Gerardo J. Ceballos González</div>
@@ -2109,7 +2135,7 @@
 
 <!-- ===================== CTA FINAL ===================== -->
 <section class="cta-section">
-  <div class="cta-content">
+  <div class="cta-content reveal">
     <div class="cta-hashtag">#MiSeleccionEsElJaguar</div>
     <h2 class="cta-title">Este 2026, El Mundo Verá Al Jaguar.<br>Aseguremos Que Siga Existiendo.</h2>
     <p class="cta-sub">
@@ -2122,7 +2148,7 @@
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-left">
-    <img src="LogoGreyscaleWebsite.png" alt="México Salvando al Jaguar" style="height:28px;opacity:0.5;vertical-align:middle;margin-right:12px;">
+    <img src="LogoGreyscaleWebsite.png" alt="México Salvando al Jaguar" loading="lazy" style="height:28px;opacity:0.5;vertical-align:middle;margin-right:12px;">
     © 2026 México Salvando al Jaguar · <a href="#">ANCJ</a> · Estrategia: Arconte
   </div>
   <div class="footer-social">
@@ -2144,15 +2170,20 @@
   // ---- Hamburger menu ----
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
+  const navOverlay = document.getElementById('navOverlay');
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+  }
   hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('active');
     hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    navOverlay.classList.toggle('active');
   });
+  navOverlay.addEventListener('click', closeMenu);
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // ---- Donation data ----
@@ -2250,6 +2281,20 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ---- Scroll reveal animations ----
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
 
 </script>
 <script async src="//www.instagram.com/embed.js"></script>
