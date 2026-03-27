@@ -907,8 +907,14 @@
     font-weight: 500;
   }
   .tier-btn:hover { background: var(--olive); }
+  a.tier-btn { display: block; text-decoration: none; text-align: center; }
   .tier.featured .tier-btn { background: var(--olive); }
   .tier.featured .tier-btn:hover { background: var(--accent-green); }
+  .gofundme-widget-wrap {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
   .tier-deducible {
     font-size: 10px;
     color: var(--gold);
@@ -1318,6 +1324,7 @@
     transition: all 0.3s;
   }
   .btn-cta-large:hover { background: var(--accent-green); color: var(--white); transform: scale(1.05); }
+  a.btn-cta-large { display: inline-block; text-decoration: none; }
 
   /* ===================== FOOTER ===================== */
   footer {
@@ -1979,7 +1986,7 @@
         <div class="tier-name">Guardián</div>
         <div class="tier-amount">$200 <small>MXN</small></div>
         <div class="tier-desc">Protege 1m² de selva durante un año. Recibes tu certificado digital de Guardián del Jaguar.</div>
-        <button class="tier-btn">Donar $200</button>
+        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $200</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
       <div class="tier featured">
@@ -1987,7 +1994,7 @@
         <div class="tier-name">Protector</div>
         <div class="tier-amount">$1,000 <small>MXN</small></div>
         <div class="tier-desc">Financia una cámara trampa por 6 meses. Recibe fotos reales de jaguares captados gracias a tu apoyo.</div>
-        <button class="tier-btn">Donar $1,000</button>
+        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $1,000</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
       <div class="tier">
@@ -1995,9 +2002,12 @@
         <div class="tier-name">Defensor</div>
         <div class="tier-amount">$5,000 <small>MXN</small></div>
         <div class="tier-desc">Patrocina un mes de patrullaje en reserva natural. Recibe reportes trimestrales del jaguar que proteges.</div>
-        <button class="tier-btn">Donar $5,000</button>
+        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $5,000</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
+    </div>
+    <div class="gofundme-widget-wrap">
+      <div class="gfm-embed" data-url="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte/widget/small?sharesheet=undefined&attribution_id=sl:712aeae2-27d9-4ba8-af04-f8af0d0df44f"></div>
     </div>
   </div>
 </section>
@@ -2105,7 +2115,7 @@
     <p class="cta-sub">
       La euforia deportiva es temporal. La conservación es para siempre. Haz que tu donación cuente.
     </p>
-    <button class="btn-cta-large" onclick="document.getElementById('donar').scrollIntoView({behavior:'smooth'})">Donar Ahora</button>
+    <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-cta-large">Donar Ahora</a>
   </div>
 </section>
 
@@ -2243,6 +2253,7 @@
 
 </script>
 <script async src="//www.instagram.com/embed.js"></script>
+<script defer src="https://www.gofundme.com/static/js/embed.js"></script>
 
 </body>
 </html>
