@@ -831,92 +831,62 @@
 
   /* ===================== DONAR ===================== */
   .donar-section {
-    padding: 60px 0 100px;
+    padding: 80px 0 100px;
   }
   .donar-inner {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 48px;
   }
-  .donate-tiers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 60px;
-  }
-  .tier {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(130,139,55,0.15);
-    padding: 36px;
+  .donar-cta-block {
     text-align: center;
-    transition: all 0.4s;
-    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
   }
-  .tier.featured {
-    border-color: var(--olive);
-    transform: scale(1.03);
-  }
-  .tier.featured::before {
-    content: 'Más elegido';
-    position: absolute;
-    top: -1px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--olive);
-    padding: 4px 20px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-  .tier:hover { border-color: var(--olive); transform: translateY(-4px); }
-  .tier.featured:hover { transform: scale(1.03) translateY(-4px); }
-  .tier-icon { font-size: 32px; margin-bottom: 14px; }
-  .tier-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--olive);
-    margin-bottom: 10px;
-  }
-  .tier-amount {
+  .donar-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 52px;
-    line-height: 1;
-    margin-bottom: 6px;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+    margin-bottom: 20px;
   }
-  .tier-amount small { font-size: 22px; color: rgba(254,254,254,0.45); }
-  .tier-desc {
-    font-size: 13px;
-    color: rgba(254,254,254,0.5);
-    margin-bottom: 24px;
-    line-height: 1.6;
+  .donar-paragraph {
+    font-size: 17px;
+    color: rgba(254,254,254,0.7);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 40px;
+    font-weight: 300;
   }
-  .tier-btn {
+  .btn-donar-principal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Oswald', sans-serif;
-    width: 100%;
-    padding: 14px;
-    border: 1px solid var(--olive);
-    background: transparent;
-    color: var(--white);
-    font-size: 14px;
+    background: var(--white);
+    color: var(--dark-olive);
+    padding: 20px 64px;
+    border: none;
+    font-size: 20px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
-    font-weight: 500;
+    text-decoration: none;
+    min-height: 64px;
   }
-  .tier-btn:hover { background: var(--olive); }
-  a.tier-btn { display: block; text-decoration: none; text-align: center; }
-  .tier.featured .tier-btn { background: var(--olive); }
-  .tier.featured .tier-btn:hover { background: var(--accent-green); }
-  .tier-deducible {
-    font-size: 10px;
-    color: var(--gold);
-    margin-top: 12px;
+  .btn-donar-principal:hover {
+    background: var(--accent-green);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+  .donar-seguro {
+    font-size: 12px;
+    color: rgba(254,254,254,0.4);
+    margin-top: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
   }
 
   /* ===================== UGC SOCIAL SECTION ===================== */
@@ -1426,7 +1396,6 @@
     .scorebug, .donation-feed { width: 100%; }
     .paradoja-grid { grid-template-columns: 1fr; }
     .destino-grid { grid-template-columns: repeat(2, 1fr); }
-    .donate-tiers { grid-template-columns: 1fr; }
     .ugc-embed-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
     nav { padding: 14px 24px; }
@@ -1539,14 +1508,10 @@
     .destino-card { padding: 24px 20px; }
 
     /* Donar */
-    .donar-section { padding: 40px 0 60px; }
+    .donar-section { padding: 48px 0 60px; }
     .donar-inner { padding: 0 24px; }
-    .donate-tiers { gap: 16px; margin-top: 40px; }
-    .tier { padding: 28px; }
-    .tier-amount { font-size: 40px; }
-    .tier-amount small { font-size: 18px; }
-    .tier.featured { transform: none; }
-    .tier.featured:hover { transform: translateY(-4px); }
+    .donar-paragraph { font-size: 16px; margin-bottom: 32px; }
+    .btn-donar-principal { padding: 18px 48px; font-size: 18px; }
 
     /* Patrocinadores — static grid on mobile */
     .patrocinadores-section { padding: 36px 0; }
@@ -1660,14 +1625,11 @@
     .destino-title { font-size: 14px; }
 
     /* Donar */
-    .donar-section { padding: 32px 0 48px; }
+    .donar-section { padding: 40px 0 48px; }
     .donar-inner { padding: 0 16px; }
-    .donate-tiers { margin-top: 32px; gap: 14px; }
-    .tier { padding: 24px 20px; }
-    .tier-amount { font-size: 36px; }
-    .tier-amount small { font-size: 16px; }
-    .tier-desc { font-size: 12px; margin-bottom: 20px; }
-    .tier-btn { padding: 0 12px; font-size: 13px; min-height: 52px; display: flex; align-items: center; justify-content: center; }
+    .donar-headline { margin-bottom: 16px; }
+    .donar-paragraph { font-size: 15px; margin-bottom: 28px; }
+    .btn-donar-principal { width: 100%; padding: 0 24px; min-height: 60px; font-size: 17px; }
 
     /* Patrocinadores */
     .patrocinadores-section { padding: 28px 0; }
@@ -1739,8 +1701,6 @@
 
     .destino-inner { padding: 0 12px; }
     .donar-inner { padding: 0 12px; }
-    .tier { padding: 20px 16px; }
-    .tier-amount { font-size: 32px; }
 
     .patrocinadores-track-wrapper::before,
     .patrocinadores-track-wrapper::after { width: 16px; }
@@ -2002,38 +1962,14 @@
 <!-- ===================== DONAR ===================== -->
 <section class="donar-section" id="donar">
   <div class="donar-inner">
-    <div class="section-header reveal">
+    <div class="donar-cta-block reveal">
       <div class="section-badge">#MiSeleccionEsElJaguar</div>
-      <h2 class="section-title">Elige Protegerlo. <span class="accent">Dona Hoy.</span></h2>
-      <p class="section-subtitle">
-        No importa el monto — cada aportación es un acto de conservación. Elige tu nivel y sé parte del equipo que está salvando al jaguar.
+      <h2 class="donar-headline">Elige Protegerlo. <span class="accent">Dona Hoy.</span></h2>
+      <p class="donar-paragraph">
+        Cada aportación es un acto de conservación. Tu apoyo ayuda a sostener el monitoreo en campo, la protección del hábitat y las acciones que hacen posible un futuro para el jaguar en México.
       </p>
-    </div>
-    <div class="donate-tiers">
-      <div class="tier reveal">
-        <div class="tier-icon">🌱</div>
-        <div class="tier-name">Guardián</div>
-        <div class="tier-amount">$200 <small>MXN</small></div>
-        <div class="tier-desc">Protege 1m² de selva durante un año. Recibes tu certificado digital de Guardián del Jaguar.</div>
-        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $200</a>
-        <div class="tier-deducible">100% deducible</div>
-      </div>
-      <div class="tier featured reveal">
-        <div class="tier-icon">🐆</div>
-        <div class="tier-name">Protector</div>
-        <div class="tier-amount">$1,000 <small>MXN</small></div>
-        <div class="tier-desc">Financia una cámara trampa por 6 meses. Recibe fotos reales de jaguares captados gracias a tu apoyo.</div>
-        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $1,000</a>
-        <div class="tier-deducible">100% deducible</div>
-      </div>
-      <div class="tier reveal">
-        <div class="tier-icon">🛡️</div>
-        <div class="tier-name">Defensor</div>
-        <div class="tier-amount">$5,000 <small>MXN</small></div>
-        <div class="tier-desc">Patrocina un mes de patrullaje en reserva natural. Recibe reportes trimestrales del jaguar que proteges.</div>
-        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $5,000</a>
-        <div class="tier-deducible">100% deducible</div>
-      </div>
+      <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-donar-principal">Donar Ahora</a>
+      <p class="donar-seguro">Tu donativo se realiza de forma segura en GoFundMe.</p>
     </div>
   </div>
 </section>
