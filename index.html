@@ -948,72 +948,17 @@
     line-height: 1.6;
   }
 
-  .ugc-grid {
+  .ugc-embed-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 200px);
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
     margin-bottom: 40px;
+    justify-items: center;
   }
-  .ugc-card {
-    background: rgba(75,80,32,0.08);
-    border: 1px solid rgba(130,139,55,0.1);
-    overflow: hidden;
-    position: relative;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 16px;
+  .ugc-embed-grid blockquote {
+    margin: 0 !important;
+    min-width: 0 !important;
   }
-  .ugc-card:hover { border-color: rgba(130,139,55,0.35); transform: scale(1.02); z-index: 2; }
-  .ugc-card.featured-ugc {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  .ugc-card .ugc-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
-    z-index: 1;
-  }
-  .ugc-card-content {
-    position: relative;
-    z-index: 2;
-  }
-  .ugc-user {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .ugc-avatar {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--dark-olive);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--accent-green);
-    font-family: 'Oswald', sans-serif;
-  }
-  .ugc-username {
-    font-family: 'Oswald', sans-serif;
-    font-size: 12px;
-    color: var(--white);
-    letter-spacing: 1px;
-  }
-  .ugc-platform {
-    font-size: 10px;
-    color: rgba(254,254,254,0.4);
-  }
-  .ugc-text {
-    font-size: 12px;
-    color: rgba(254,254,254,0.7);
-    line-height: 1.5;
-  }
-  .ugc-text .hashtag { color: var(--gold); font-weight: 600; }
 
   .ugc-cta-row {
     text-align: center;
@@ -1458,8 +1403,7 @@
     .paradoja-grid { grid-template-columns: 1fr; }
     .destino-grid { grid-template-columns: repeat(2, 1fr); }
     .donate-tiers { grid-template-columns: 1fr; }
-    .ugc-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 180px); }
-    .ugc-card.featured-ugc { grid-column: span 2; grid-row: span 1; }
+    .ugc-embed-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-bar { flex-wrap: wrap; gap: 32px; padding: 36px 24px; }
     nav { padding: 14px 24px; }
     .nav-links { display: none; }
@@ -1592,9 +1536,7 @@
     /* UGC */
     .ugc-section { padding: 60px 0; }
     .ugc-inner { padding: 0 24px; }
-    .ugc-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 10px; margin-bottom: 32px; }
-    .ugc-card { min-height: 160px; }
-    .ugc-card.featured-ugc { grid-column: span 1; grid-row: span 1; min-height: 220px; }
+    .ugc-embed-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
     /* Ciencia */
     .ciencia-section { padding: 60px 24px; }
@@ -1718,8 +1660,7 @@
     /* UGC */
     .ugc-section { padding: 48px 0; }
     .ugc-inner { padding: 0 16px; }
-    .ugc-card { min-height: 140px; padding: 12px; }
-    .ugc-card.featured-ugc { min-height: 180px; }
+    .ugc-embed-grid { grid-template-columns: 1fr; gap: 12px; }
     .ugc-cta-text { font-size: 14px; letter-spacing: 2px; }
     .btn-ugc { padding: 12px 28px; font-size: 13px; }
     .ugc-social-follow { gap: 14px; margin-top: 20px; }
@@ -2116,8 +2057,13 @@
       <p>Miles de personas ya eligieron al jaguar este 2026. Comparte tu apoyo y únete a la conversación.</p>
     </div>
 
-    <div class="ugc-grid" id="ugcGrid">
-      <!-- Populated by JS -->
+    <div class="ugc-embed-grid">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWVC97sjOpT/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWR-W2MAa27/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWFlpBWjKNa/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWQMOIPjd_M/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWNCGjGDND3/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVhxgE8jiUK/" data-instgrm-version="14" style="max-width:540px; width:100%;"></blockquote>
     </div>
 
     <div class="ugc-cta-row">
@@ -2295,36 +2241,8 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ---- UGC Grid ----
-  const ugcPosts = [
-    { user: "@maria_selvamx", platform: "Instagram", text: "Este año mi selección no es un equipo de futbol. Mi selección es el jaguar. 🐆🇲🇽 <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: true },
-    { user: "@carlos_nat", platform: "X (Twitter)", text: "5,300 jaguares. Que en 2030 sean más. Yo ya doné. <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: false },
-    { user: "@ecovida_mx", platform: "TikTok", text: "POV: descubres que la mascota del mundial está en peligro de extinción real 🫠 <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: false },
-    { user: "@ana_oaxaca", platform: "Instagram", text: "Fui al evento de conservación en Oaxaca. Increíble lo que hace la ANCJ. Gracias Dr. Ceballos 🙏 <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: false },
-    { user: "@verde_collective", platform: "Instagram", text: "Como marca decidimos que nuestra mejor inversión este año es proteger al rey de la selva. 🌿🐆 <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: false },
-    { user: "@paty_chiapas", platform: "X (Twitter)", text: "Mis hijos me preguntaron por qué el jaguar del mundial se ve feliz pero el real no. Ahí les expliqué todo. <span class='hashtag'>#MiSeleccionEsElJaguar</span>", featured: false },
-  ];
-
-  function buildUGC() {
-    const grid = document.getElementById('ugcGrid');
-    grid.innerHTML = ugcPosts.map(p => `
-      <div class="ugc-card ${p.featured?'featured-ugc':''}">
-        <div class="ugc-bg"></div>
-        <div class="ugc-card-content">
-          <div class="ugc-user">
-            <div class="ugc-avatar">${p.user.charAt(1).toUpperCase()}</div>
-            <div>
-              <div class="ugc-username">${p.user}</div>
-              <div class="ugc-platform">${p.platform}</div>
-            </div>
-          </div>
-          <div class="ugc-text">${p.text}</div>
-        </div>
-      </div>
-    `).join('');
-  }
-  buildUGC();
 </script>
+<script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
