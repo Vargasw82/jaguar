@@ -300,6 +300,7 @@
   }
   .btn-primary:hover::after { left: 100%; }
   .btn-primary:hover { background: var(--accent-green); transform: translateY(-2px); }
+  a.btn-primary { display: inline-block; text-decoration: none; text-align: center; }
 
   .btn-secondary {
     font-family: 'Oswald', sans-serif;
@@ -910,11 +911,6 @@
   a.tier-btn { display: block; text-decoration: none; text-align: center; }
   .tier.featured .tier-btn { background: var(--olive); }
   .tier.featured .tier-btn:hover { background: var(--accent-green); }
-  .gofundme-widget-wrap {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-  }
   .tier-deducible {
     font-size: 10px;
     color: var(--gold);
@@ -1749,7 +1745,7 @@
     <li><a href="#paradoja">La Paradoja</a></li>
     <li><a href="#destino">Tu Impacto</a></li>
     <li><a href="#social">Comunidad</a></li>
-    <li><a href="#donar" class="btn-donate-nav">Donar</a></li>
+    <li><a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-donate-nav">Donar</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -1780,7 +1776,7 @@
         <strong>5,300 jaguares</strong> sobreviven en la selva mexicana. Mientras el mundo celebra al jaguar como mascota del Mundial, en su hábitat real está desapareciendo. Convierte la euforia del 2026 por el jaguar en una <strong>acción de conservación real</strong>.
       </p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="document.getElementById('donar').scrollIntoView({behavior:'smooth'})">Donar</button>
+        <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-primary">Donar</a>
         <button class="btn-secondary" onclick="document.getElementById('paradoja').scrollIntoView({behavior:'smooth'})">Conocer más</button>
       </div>
       <div class="hero-deducible"><strong>100% deducible de impuestos</strong> · Respaldado por la ANCJ e instituciones científicas</div>
@@ -2005,9 +2001,6 @@
         <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="tier-btn">Donar $5,000</a>
         <div class="tier-deducible">100% deducible</div>
       </div>
-    </div>
-    <div class="gofundme-widget-wrap">
-      <div class="gfm-embed" data-url="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte/widget/small?sharesheet=undefined&attribution_id=sl:712aeae2-27d9-4ba8-af04-f8af0d0df44f"></div>
     </div>
   </div>
 </section>
@@ -2253,7 +2246,7 @@
 
 </script>
 <script async src="//www.instagram.com/embed.js"></script>
-<script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+
 
 </body>
 </html>
