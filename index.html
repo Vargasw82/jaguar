@@ -1507,8 +1507,8 @@
     .patrocinadores-track-wrapper::after { display: none; }
     .patrocinadores-track { animation: none; flex-wrap: nowrap; justify-content: center; gap: 24px; position: relative; }
     .patrocinador-logo-item:nth-child(n+6) { display: none; }
-    .patrocinador-logo-item { width: calc(50% - 12px); height: 70px; opacity: 0; position: absolute; transition: opacity 0.6s ease; }
-    .patrocinador-logo-item.patro-active { opacity: 1; position: relative; }
+    .patrocinador-logo-item { width: calc(50% - 12px); height: 70px; opacity: 0; position: absolute; transition: opacity 0.8s ease-in-out; transform: scale(0.95); }
+    .patrocinador-logo-item.patro-active { opacity: 1; position: relative; transform: scale(1); }
     .patrocinador-logo-item img { max-width: 130px; max-height: 60px; }
 
     /* Historias — image above, text below */
@@ -2208,15 +2208,32 @@
     if (window.innerWidth > 768) return;
     const items = Array.from(document.querySelectorAll('.patrocinador-logo-item')).slice(0, 5);
     if (items.length < 2) return;
-    let current = 0;
+
+    // Fisher-Yates shuffle for random order
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    let order = shuffle([...Array(items.length).keys()]);
+    let idx = 0;
+
     function showPair() {
       items.forEach(el => el.classList.remove('patro-active'));
-      items[current % items.length].classList.add('patro-active');
-      items[(current + 1) % items.length].classList.add('patro-active');
-      current = (current + 2) % items.length;
+      items[order[idx % order.length]].classList.add('patro-active');
+      items[order[(idx + 1) % order.length]].classList.add('patro-active');
+      idx += 2;
+      // Re-shuffle when cycle completes
+      if (idx >= order.length) {
+        idx = 0;
+        order = shuffle([...Array(items.length).keys()]);
+      }
     }
     showPair();
-    setInterval(showPair, 2000);
+    setInterval(showPair, 2500);
   }
   initPatroCarousel();
 
