@@ -325,7 +325,7 @@
   }
   .hero-deducible strong { color: var(--gold); }
   .hero-deducible p { margin: 0; }
-  .hero-deducible-respaldo { margin: 4px 0 0; }
+  .hero-deducible-respaldo { margin: 4px 0 0; color: rgba(254,254,254,0.85); }
   .hero-ancj-logo {
     display: block;
     margin-top: 12px;
@@ -1752,7 +1752,7 @@
         Si el jaguar representa a México ante el mundo, México debe protegerlo.
       </p>
       <p class="hero-subtitle">
-        <strong>5,300 jaguares</strong> sobreviven en la selva mexicana. Mientras el mundo celebra al jaguar como mascota del Mundial, en su hábitat real está desapareciendo. Convierte la euforia del 2026 por el jaguar en una <strong>acción de conservación real</strong>.
+        <strong>5,300 jaguares</strong> sobreviven en la selva mexicana. Mientras en 2026, el mundo celebra al jaguar como mascota oficial, en su hábitat real lo tienen olvidado. Convierte la euforia del 2026 por el jaguar en una <strong>acción de conservación real</strong>.
       </p>
       <div class="hero-actions">
         <a href="https://www.gofundme.com/f/mexico-salvando-al-jaguar-que-su-rugido-sea-mas-fuerte" target="_blank" rel="noopener" class="btn-primary">Donar</a>
@@ -2209,7 +2209,7 @@
     const items = Array.from(document.querySelectorAll('.patrocinador-logo-item')).slice(0, 5);
     if (items.length < 2) return;
 
-    // Fisher-Yates shuffle for random order
+    // Fisher-Yates shuffle
     function shuffle(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -2218,22 +2218,43 @@
       return arr;
     }
 
-    let order = shuffle([...Array(items.length).keys()]);
-    let idx = 0;
-
-    function showPair() {
-      items.forEach(el => el.classList.remove('patro-active'));
-      items[order[idx % order.length]].classList.add('patro-active');
-      items[order[(idx + 1) % order.length]].classList.add('patro-active');
-      idx += 2;
-      // Re-shuffle when cycle completes
-      if (idx >= order.length) {
-        idx = 0;
-        order = shuffle([...Array(items.length).keys()]);
+    // Build pairs from shuffled indices, no repeats within a pair
+    function buildPairs() {
+      const indices = shuffle([...Array(items.length).keys()]);
+      const pairs = [];
+      for (let i = 0; i < indices.length; i += 2) {
+        if (i + 1 < indices.length) {
+          pairs.push([indices[i], indices[i + 1]]);
+        } else {
+          // Odd item: pair with a random one from previous pairs
+          const partner = indices[Math.floor(Math.random() * i)];
+          pairs.push([indices[i], partner]);
+        }
       }
+      return pairs;
     }
-    showPair();
-    setInterval(showPair, 2500);
+
+    let pairs = buildPairs();
+    let pairIdx = 0;
+
+    function showCurrent() {
+      items.forEach(el => el.classList.remove('patro-active'));
+      const pair = pairs[pairIdx];
+      items[pair[0]].classList.add('patro-active');
+      items[pair[1]].classList.add('patro-active');
+    }
+
+    // Show first pair immediately
+    showCurrent();
+
+    setInterval(() => {
+      pairIdx++;
+      if (pairIdx >= pairs.length) {
+        pairIdx = 0;
+        pairs = buildPairs();
+      }
+      showCurrent();
+    }, 2500);
   }
   initPatroCarousel();
 
